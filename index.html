@@ -16,10 +16,9 @@ body{
 .bg-glow::before{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 55% 45% at 12% 20%, rgba(151,71,255,0.1), transparent 70%),
-    radial-gradient(ellipse 45% 55% at 88% 80%, rgba(245,166,35,0.02), transparent 70%),
-    radial-gradient(ellipse 35% 35% at 55% 45%, rgba(78,156,255,0.04), transparent 60%),
-    radial-gradient(ellipse 30% 30% at 40% 90%, rgba(45,212,160,0.03), transparent 60%);
+    radial-gradient(ellipse 55% 45% at 12% 20%, rgba(151,71,255,0.08), transparent 70%),
+    radial-gradient(ellipse 35% 35% at 55% 45%, rgba(78,156,255,0.03), transparent 60%),
+    radial-gradient(ellipse 30% 30% at 40% 90%, rgba(45,212,160,0.02), transparent 60%);
 }
 .bg-glow::after{
   content:'';position:absolute;inset:0;
@@ -370,7 +369,7 @@ const { useState, useEffect } = React;
 const Bot=({agent="claude",state="idle",s=18,name})=>{const[f,setF]=useState(0);const p={claude:{body:"#D4A574",eye:"#1A1024",hi:"#E8C9A0"},codex:{body:"#10A37F",eye:"#064E3B",hi:"#6EE7B7"}}[agent]||{body:"#D4A574",eye:"#1A1024",hi:"#E8C9A0"};useEffect(()=>{if(state!=="working")return;const i=setInterval(()=>setF(v=>(v+1)%4),300);return()=>clearInterval(i)},[state]);const bob=state==="working"?[0,-.5,0,.5][f]:0;return(<svg width={s} height={s} viewBox="0 0 12 12" style={{imageRendering:"pixelated",flexShrink:0}}><rect x={4} y={0} width={4} height={.8} rx={.3} fill={p.hi} opacity={.5}/><rect x={3} y={1} width={6} height={4} rx={.8} fill={p.body}/><rect x={4} y={2.2} width={1.2} height={1} rx={.3} fill={p.eye}/><rect x={6.8} y={2.2} width={1.2} height={1} rx={.3} fill={p.eye}/><rect x={4} y={2.2} width={.5} height={.4} rx={.2} fill="#fff" opacity={.7}/><rect x={6.8} y={2.2} width={.5} height={.4} rx={.2} fill="#fff" opacity={.7}/><g transform={`translate(0,${bob})`}><rect x={3.5} y={5.2} width={5} height={3} rx={.6} fill={p.body} opacity={.85}/><rect x={2.2} y={5.5} width={1.3} height={2} rx={.4} fill={p.body} opacity={.6}/><rect x={8.5} y={5.5} width={1.3} height={2} rx={.4} fill={p.body} opacity={.6}/><rect x={4} y={8.3} width={1.2} height={1.5} rx={.3} fill={p.body} opacity={.55}/><rect x={6.8} y={8.3} width={1.2} height={1.5} rx={.3} fill={p.body} opacity={.55}/></g>{state==="working"&&<circle cx={10} cy={[3,2,3,4][f]} r={.4} fill={p.hi} opacity={[1,.4,.7,.4][f]}/>}</svg>)};
 const Glow=({color,pulse=false,s=5})=>(<span style={{display:"inline-block",width:s,height:s,borderRadius:"50%",background:color,flexShrink:0,boxShadow:pulse?`0 0 ${s+3}px ${color}50`:"none",animation:pulse?"pulse 2.4s ease-in-out infinite":"none"}}/>);
 
-const c={base:"#0E0D0B",raised:"#181715",surface:"#201F1C",hover:"#282724",active:"#302F2B",t1:"#EDECE8",t2:"#A5A49E",t3:"#6B6A65",t4:"#3E3D3A",purple:"#9747FF",purpleL:"#B78AFF",working:"#F5A623",pending:"#9747FF",done:"#2DD4A0",failed:"#F45B5B",todo:"#6B6A65",blue:"#4E9CFF",cyan:"#22D3EE"};
+const c={base:"#0C0C0E",raised:"#151517",surface:"#1C1C1F",hover:"#242426",active:"#2B2B2E",t1:"#EDEDEC",t2:"#A5A4A6",t3:"#6A6A6C",t4:"#3D3D3F",purple:"#9747FF",purpleL:"#B78AFF",working:"#F5A623",pending:"#9747FF",done:"#2DD4A0",failed:"#F45B5B",todo:"#6B6A65",blue:"#4E9CFF",cyan:"#22D3EE"};
 const mono='"SF Mono","JetBrains Mono",monospace';
 const pixelFont="'GeistPixelLine',monospace";
 
@@ -589,7 +588,6 @@ const App = function KanbaiV12(){
         ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.03);border-radius:1px}
       `}</style>
 
-      <div style={{position:"absolute",top:0,right:0,width:"30%",height:"30%",background:`radial-gradient(ellipse at top right, ${c.working}02, transparent 70%)`,pointerEvents:"none",animation:"ambientShift 8s ease-in-out infinite"}}/>
       <div style={{position:"absolute",bottom:0,left:"20%",width:"30%",height:"30%",background:`radial-gradient(ellipse at bottom, ${c.purple}03, transparent 70%)`,pointerEvents:"none"}}/>
 
       <WsSwitcher open={wsOpen} onClose={()=>setWsOpen(false)}/>
