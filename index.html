@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>kanbai — AI-native project orchestrator</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.9/babel.min.js"></script>
@@ -14,8 +14,8 @@
   html, body { height: 100%; overflow: hidden; }
   
   body {
-    background: #050506;
-    font-family: 'Space Grotesk', -apple-system, sans-serif;
+    background: #030304;
+    font-family: 'Geist Sans', 'Geist', -apple-system, sans-serif;
     color: #EDEDEC;
     display: flex;
     flex-direction: column;
@@ -40,10 +40,10 @@
     top: -20%;
     left: -20%;
     background:
-      radial-gradient(ellipse 600px 500px at 15% 20%, rgba(151,71,255,.10) 0%, transparent 70%),
-      radial-gradient(ellipse 500px 600px at 85% 75%, rgba(78,156,255,.07) 0%, transparent 70%),
-      radial-gradient(ellipse 400px 350px at 50% 10%, rgba(245,166,35,.04) 0%, transparent 60%),
-      radial-gradient(ellipse 600px 400px at 70% 40%, rgba(45,212,160,.04) 0%, transparent 65%);
+      radial-gradient(ellipse 600px 500px at 15% 20%, rgba(0,200,255,.08) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 600px at 85% 75%, rgba(167,139,250,.06) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 350px at 50% 10%, rgba(0,200,255,.03) 0%, transparent 60%),
+      radial-gradient(ellipse 600px 400px at 70% 40%, rgba(52,211,153,.03) 0%, transparent 65%);
     animation: meshDrift 25s ease-in-out infinite alternate;
   }
   .bg-mesh::after {
@@ -69,8 +69,8 @@
     inset: 0;
     z-index: 0;
     background-image:
-      linear-gradient(rgba(151,71,255,.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(151,71,255,.02) 1px, transparent 1px);
+      linear-gradient(rgba(0,200,255,.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,.015) 1px, transparent 1px);
     background-size: 80px 80px;
     mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 80%);
@@ -93,6 +93,7 @@
     position: relative;
     z-index: 1;
     width: 92vw;
+    min-width: 1200px;
     max-width: 1340px;
     height: 82vh;
     max-height: 780px;
@@ -102,8 +103,8 @@
       0 0 0 1px rgba(255,255,255,.04),
       0 4px 24px rgba(0,0,0,.5),
       0 24px 80px rgba(0,0,0,.6),
-      0 0 120px rgba(151,71,255,.06),
-      0 0 200px rgba(78,156,255,.03);
+      0 0 120px rgba(0,200,255,.05),
+      0 0 200px rgba(167,139,250,.03);
     animation: frameIn .8s cubic-bezier(.16,1,.3,1) both;
   }
 
@@ -114,10 +115,10 @@
 
   /* ═══ CORNER ACCENTS ═══ */
   .corner { position: fixed; width: 60px; height: 60px; z-index: 0; opacity: .12; }
-  .corner--tl { top: 24px; left: 24px; border-top: 1px solid rgba(151,71,255,.5); border-left: 1px solid rgba(151,71,255,.5); }
-  .corner--tr { top: 24px; right: 24px; border-top: 1px solid rgba(78,156,255,.4); border-right: 1px solid rgba(78,156,255,.4); }
-  .corner--bl { bottom: 24px; left: 24px; border-bottom: 1px solid rgba(45,212,160,.3); border-left: 1px solid rgba(45,212,160,.3); }
-  .corner--br { bottom: 24px; right: 24px; border-bottom: 1px solid rgba(245,166,35,.3); border-right: 1px solid rgba(245,166,35,.3); }
+  .corner--tl { top: 24px; left: 24px; border-top: 1px solid rgba(0,200,255,.4); border-left: 1px solid rgba(0,200,255,.4); }
+  .corner--tr { top: 24px; right: 24px; border-top: 1px solid rgba(167,139,250,.3); border-right: 1px solid rgba(167,139,250,.3); }
+  .corner--bl { bottom: 24px; left: 24px; border-bottom: 1px solid rgba(52,211,153,.3); border-left: 1px solid rgba(52,211,153,.3); }
+  .corner--br { bottom: 24px; right: 24px; border-bottom: 1px solid rgba(0,200,255,.3); border-right: 1px solid rgba(0,200,255,.3); }
 
   /* ═══ TAGLINE ═══ */
   .tagline {
@@ -129,14 +130,14 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Geist Mono', monospace;
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: rgba(255,255,255,.15);
     animation: tagIn 1.2s cubic-bezier(.16,1,.3,1) .4s both;
   }
-  .tagline .dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(151,71,255,.4); }
+  .tagline .dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(0,200,255,.3); }
 
   @keyframes tagIn {
     0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
@@ -149,7 +150,7 @@
     top: 28px;
     right: 32px;
     z-index: 2;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Geist Mono', monospace;
     font-size: 9px;
     color: rgba(255,255,255,.1);
     letter-spacing: 1px;
@@ -192,8 +193,8 @@ const { useState, useEffect, Fragment } = React;
 
 
 
-const c={base:"#0C0C0E",raised:"#151517",surface:"#1C1C1F",hover:"#242426",active:"#2B2B2E",t1:"#EDEDEC",t2:"#A5A4A6",t3:"#6A6A6C",t4:"#3D3D3F",purple:"#9747FF",purpleL:"#B78AFF",working:"#F5A623",pending:"#9747FF",done:"#2DD4A0",failed:"#F45B5B",todo:"#6B6A65",blue:"#4E9CFF",cyan:"#22D3EE"};
-const mono='"SF Mono","JetBrains Mono",monospace';
+const c={void:"#060608",base:"#0A0A0D",raised:"#0F0F13",surface:"#151519",hover:"#1C1C21",active:"#222228",t1:"#EAEAEA",t2:"#8E8E93",t3:"#555558",t4:"#333336",purple:"#00C8FF",purpleL:"#00C8FF",working:"#00C8FF",pending:"#A78BFA",done:"#34D399",failed:"#F87171",todo:"#404044",blue:"#60A5FA",cyan:"#22D3EE"};
+const mono='"Geist Mono","SF Mono",monospace';
 const pxFont="'GeistPixelLine',monospace";
 
 const P={
@@ -233,7 +234,7 @@ const Ph = ({d, s=16, color}) => (
 // ═══ BOT ═══
 const Bot = ({agent="claude", state="idle", s=18}) => {
   const [f, setF] = useState(0);
-  const pa = {claude:{body:"#D4A574",eye:"#1A1024",hi:"#E8C9A0"},codex:{body:"#10A37F",eye:"#064E3B",hi:"#6EE7B7"}}[agent] || {body:"#D4A574",eye:"#1A1024",hi:"#E8C9A0"};
+  const pa = {claude:{body:"#0098C0",eye:"#003040",hi:"#00C8FF"},codex:{body:"#A78BFA",eye:"#3B1F7E",hi:"#C4B5FD"}}[agent] || {body:"#0098C0",eye:"#003040",hi:"#00C8FF"};
   useEffect(() => { if (state !== "working") return; const i = setInterval(() => setF(v => (v+1)%4), 300); return () => clearInterval(i); }, [state]);
   const bob = state === "working" ? [0,-.5,0,.5][f] : 0;
   return (
@@ -256,49 +257,73 @@ const Glow = ({color, pulse=false, s=5}) => (
   <span style={{display:"inline-block",width:s,height:s,borderRadius:"50%",background:color,flexShrink:0,boxShadow:pulse?`0 0 ${s+3}px ${color}50`:"none",animation:pulse?"pulse 2.4s ease-in-out infinite":"none"}}/>
 );
 
-const Logo = ({size=13}) => (
-  <span style={{fontFamily:pxFont,fontSize:size,lineHeight:1,imageRendering:"pixelated",WebkitFontSmoothing:"none",whiteSpace:"pre"}}>
-    <span style={{color:c.purple}}>[</span><span style={{color:c.t1}}>kanb</span><span style={{color:c.purple}}>ai</span><span style={{color:c.purple}}>]</span>
-  </span>
+const Logo = ({h=14}) => (
+  <svg height={h} viewBox="45 207 418 98" style={{flexShrink:0}}>
+    <g transform="translate(42.84, 290.48) scale(0.11, -0.11)">
+      <path d="M76 722V741H304V722ZM76 684V703H304V684ZM76 646V665H152V646ZM76 608V627H152V608ZM76 570V589H152V570ZM76 532V551H152V532ZM76 494V513H152V494ZM76 456V475H152V456ZM76 418V437H152V418ZM76 380V399H152V380ZM76 342V361H152V342ZM76 304V323H152V304ZM76 266V285H152V266ZM76 228V247H152V228ZM76 190V209H152V190ZM76 152V171H152V152ZM76 114V133H152V114ZM76 76V95H152V76ZM76 38V57H152V38ZM76 0V19H152V0ZM76 -38V-19H152V-38ZM76 -76V-57H304V-76ZM76 -114V-95H304V-114Z" fill="#00C8FF"/>
+      <path d="M76 684V703H152V684ZM76 646V665H152V646ZM76 608V627H152V608ZM76 570V589H152V570ZM76 532V551H152V532ZM418 494V513H494V494ZM76 494V513H152V494ZM76 456V475H152V456ZM380 456V475H494V456ZM76 418V437H152V418ZM342 418V437H456V418ZM304 380V399H418V380ZM76 380V399H152V380ZM76 342V361H152V342ZM266 342V361H380V342ZM228 304V323H342V304ZM76 304V323H152V304ZM76 266V285H152V266ZM190 266V285H304V266ZM76 228V247H342V228ZM76 190V209H228V190ZM266 190V209H380V190ZM304 152V171H418V152ZM76 152V171H190V152ZM342 114V133H456V114ZM76 114V133H152V114ZM76 76V95H152V76ZM380 76V95H494V76ZM418 38V57H494V38ZM76 38V57H152V38ZM76 0V19H152V0ZM418 0V19H494V0Z" fill="#EAEAEA" transform="translate(342, 0)"/>
+      <path d="M190 494V513H380V494ZM114 456V475H456V456ZM380 418V437H456V418ZM76 418V437H190V418ZM76 380V399H152V380ZM418 380V399H494V380ZM418 342V361H494V342ZM380 304V323H494V304ZM190 266V285H494V266ZM114 228V247H380V228ZM418 228V247H494V228ZM76 190V209H190V190ZM418 190V209H494V190ZM418 152V171H494V152ZM76 152V171H152V152ZM418 114V133H494V114ZM76 114V133H152V114ZM380 76V95H494V76ZM76 76V95H152V76ZM418 38V57H532V38ZM114 38V57H380V38ZM152 0V19H342V0ZM456 0V19H532V0Z" fill="#EAEAEA" transform="translate(874, 0)"/>
+      <path d="M76 494V513H152V494ZM228 494V513H418V494ZM190 456V475H456V456ZM76 456V475H152V456ZM380 418V437H494V418ZM76 418V437H190V418ZM76 380V399H152V380ZM418 380V399H494V380ZM76 342V361H152V342ZM418 342V361H494V342ZM418 304V323H494V304ZM76 304V323H152V304ZM76 266V285H152V266ZM418 266V285H494V266ZM76 228V247H152V228ZM418 228V247H494V228ZM418 190V209H494V190ZM76 190V209H152V190ZM76 152V171H152V152ZM418 152V171H494V152ZM76 114V133H152V114ZM418 114V133H494V114ZM418 76V95H494V76ZM76 76V95H152V76ZM418 38V57H494V38ZM76 38V57H152V38ZM76 0V19H152V0ZM418 0V19H494V0Z" fill="#EAEAEA" transform="translate(1444, 0)"/>
+      <path d="M76 684V703H152V684ZM76 646V665H152V646ZM76 608V627H152V608ZM76 570V589H152V570ZM76 532V551H152V532ZM76 494V513H152V494ZM228 494V513H418V494ZM190 456V475H456V456ZM76 456V475H152V456ZM380 418V437H494V418ZM76 418V437H190V418ZM418 380V399H494V380ZM76 380V399H190V380ZM456 342V361H532V342ZM76 342V361H152V342ZM76 304V323H152V304ZM456 304V323H532V304ZM456 266V285H532V266ZM76 266V285H152V266ZM456 228V247H532V228ZM76 228V247H152V228ZM456 190V209H532V190ZM76 190V209H152V190ZM456 152V171H532V152ZM76 152V171H152V152ZM76 114V133H190V114ZM418 114V133H494V114ZM380 76V95H494V76ZM76 76V95H190V76ZM190 38V57H456V38ZM76 38V57H152V38ZM76 0V19H152V0ZM228 0V19H418V0Z" fill="#EAEAEA" transform="translate(2014, 0)"/>
+      <path d="M190 494V513H380V494ZM114 456V475H456V456ZM380 418V437H456V418ZM76 418V437H190V418ZM76 380V399H152V380ZM418 380V399H494V380ZM418 342V361H494V342ZM380 304V323H494V304ZM190 266V285H494V266ZM114 228V247H380V228ZM418 228V247H494V228ZM76 190V209H190V190ZM418 190V209H494V190ZM418 152V171H494V152ZM76 152V171H152V152ZM418 114V133H494V114ZM76 114V133H152V114ZM380 76V95H494V76ZM76 76V95H152V76ZM418 38V57H532V38ZM114 38V57H380V38ZM152 0V19H342V0ZM456 0V19H532V0Z" fill="#00C8FF" transform="translate(2584, 0)"/>
+      <path d="M38 494V513H228V494ZM38 456V475H228V456ZM152 418V437H228V418ZM152 380V399H228V380ZM152 342V361H228V342ZM152 304V323H228V304ZM152 266V285H228V266ZM152 228V247H228V228ZM152 190V209H228V190ZM152 152V171H228V152ZM152 114V133H228V114ZM152 76V95H228V76ZM38 38V57H342V38ZM38 0V19H342V0ZM152 684V703H228V684ZM152 646V665H228V646ZM152 608V627H228V608Z" fill="#00C8FF" transform="translate(3154, 0)"/>
+      <path d="M38 722V741H266V722ZM38 684V703H266V684ZM190 646V665H266V646ZM190 608V627H266V608ZM190 570V589H266V570ZM190 532V551H266V532ZM190 494V513H266V494ZM190 456V475H266V456ZM190 418V437H266V418ZM190 380V399H266V380ZM190 342V361H266V342ZM190 304V323H266V304ZM190 266V285H266V266ZM190 228V247H266V228ZM190 190V209H266V190ZM190 152V171H266V152ZM190 114V133H266V114ZM190 76V95H266V76ZM190 38V57H266V38ZM190 0V19H266V0ZM190 -38V-19H266V-38ZM38 -76V-57H266V-76ZM38 -114V-95H266V-114Z" fill="#00C8FF" transform="translate(3534, 0)"/>
+    </g>
+  </svg>
 );
 
 // ═══ CARDS ═══
-const PBadge = ({level}) => {
-  const m = {critical:{l:"P0",bg:`${c.failed}15`,co:c.failed},high:{l:"P1",bg:`${c.working}12`,co:c.working},medium:{l:"P2",bg:`${c.blue}12`,co:c.blue},low:{l:"P3",bg:`${c.t3}10`,co:c.t3}};
-  const p = m[level]; if (!p) return null;
-  return <span style={{fontSize:7,fontFamily:mono,fontWeight:600,padding:"1px 4px",borderRadius:2,background:p.bg,color:p.co}}>{p.l}</span>;
+const Pri = ({level}) => {
+  const nn = {critical:4,high:3,medium:2,low:1}[level]||1;
+  const col = {critical:c.failed,high:c.working,medium:c.blue,low:c.t3}[level]||c.t3;
+  return (
+    <div style={{display:"flex",gap:1.5,alignItems:"flex-end",height:10}}>
+      {[0,1,2,3].map(i => <span key={i} style={{width:2.5,height:3+i*2,borderRadius:1,background:i<nn?col:`${c.t4}40`}}/>)}
+    </div>
+  );
 };
 
-const KCard = ({title, type, status, agent, priority, desc, files, fileCount, duration}) => {
+const KCard = ({title, type, status, agent, priority, desc, files, fileCount, duration, progress, diffPlus, diffMinus}) => {
   const [exp, setExp] = useState(false);
   const sc = {working:c.working,pending:c.pending,done:c.done,failed:c.failed,todo:c.todo};
   const tc = {feature:c.purple,bug:c.failed,refactor:c.blue,doc:c.t3};
   const col = sc[status]; const act = status === "working";
   const sl = {working:"Working",pending:"Queued",done:"Done",failed:"Failed",todo:"—"};
   const bn = agent === "claude" ? "Riku-7" : "Vex-3";
+  const hasFooter = fileCount || diffPlus;
   return (
-    <div onClick={() => act && setExp(v => !v)} style={{background:c.surface,borderRadius:3,padding:"8px 9px",position:"relative",overflow:"hidden",outline:status==="failed"?`1px solid ${col}55`:"none",cursor:act?"pointer":"default"}}>
-      {act && <Fragment><div style={{position:"absolute",inset:0,borderRadius:3,overflow:"hidden",pointerEvents:"none"}}><div style={{position:"absolute",inset:"-80px",background:`conic-gradient(from 0deg, transparent 0%, transparent 75%, ${col}35 85%, transparent 95%)`,animation:"beamSpin 4s linear infinite"}}/></div><div style={{position:"absolute",inset:1,borderRadius:2,background:c.surface,pointerEvents:"none"}}/></Fragment>}
-      {act && <div style={{position:"absolute",top:0,left:0,right:0,height:1,background:`linear-gradient(90deg,transparent,${col},transparent)`,animation:"scan 2.5s ease-in-out infinite",zIndex:1}}/>}
+    <div onClick={() => act && setExp(v => !v)} style={{background:c.surface,borderRadius:4,padding:0,position:"relative",overflow:"hidden",outline:act?`1px solid ${col}20`:status==="failed"?`1px solid ${col}55`:"none",cursor:act?"pointer":"default"}}>
+      {act && <Fragment><div style={{position:"absolute",inset:0,borderRadius:4,overflow:"hidden",pointerEvents:"none"}}><div style={{position:"absolute",inset:"-80px",background:`conic-gradient(from 0deg, transparent 0%, transparent 75%, ${col}35 85%, transparent 95%)`,animation:"beamSpin 4s linear infinite"}}/></div><div style={{position:"absolute",inset:1,borderRadius:2,background:c.surface,pointerEvents:"none"}}/></Fragment>}
       <div style={{position:"relative",zIndex:1}}>
-        {/* Row 1: tags + status — fixed */}
-        <div style={{display:"flex",alignItems:"center",gap:4,height:16}}>
-          {type && <span style={{fontSize:7,fontWeight:500,padding:"1px 4px",borderRadius:2,background:`${tc[type]||c.t3}15`,color:tc[type]||c.t3}}>{type}</span>}
-          <PBadge level={priority}/><div style={{flex:1}}/><span style={{fontSize:7,color:col,fontFamily:mono}}>{sl[status]}</span>
+        <div style={{padding:"8px 10px 6px"}}>
+          {/* Row 1: type label + priority */}
+          <div style={{display:"flex",alignItems:"center",gap:5,marginBottom:5}}>
+            {type && <span style={{fontSize:9,fontWeight:500,padding:"2px 6px",borderRadius:2,background:`${tc[type]||c.t3}15`,color:tc[type]||c.t3}}>{type}</span>}
+            <div style={{flex:1}}/>
+            <Pri level={priority}/>
+          </div>
+          {/* Row 2: title */}
+          <div style={{fontSize:11,fontWeight:500,color:c.t1,lineHeight:1.35,marginBottom:8,overflow:"hidden",display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical"}}>{title}</div>
+          {/* Row 3: agent + duration */}
+          <div style={{display:"flex",alignItems:"center",gap:5}}>
+            {agent && <Fragment><Bot agent={agent} state={status} s={12}/><span style={{fontSize:9,color:c.t2}}>{bn}</span></Fragment>}
+            <div style={{flex:1}}/>
+            {duration && <span style={{fontSize:9,fontFamily:mono,color:col}}>{duration}</span>}
+          </div>
         </div>
-        {/* Row 2: title — fixed height, 2 lines max */}
-        <div style={{fontSize:10.5,fontWeight:500,color:c.t1,lineHeight:1.3,height:28,overflow:"hidden",display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical"}}>{title}</div>
-        {/* Row 3: agent + meta — fixed */}
-        <div style={{display:"flex",alignItems:"center",gap:4,height:16}}>
-          {agent ? <Fragment><Bot agent={agent} state={status} s={12}/><span style={{fontSize:8,color:c.t2}}>{bn}</span></Fragment> : <span style={{fontSize:8,color:c.t4}}>—</span>}
-          {fileCount && <Fragment><span style={{fontSize:8,color:c.t4,opacity:.3}}>·</span><span style={{fontSize:8,fontFamily:mono,color:c.t4}}>{fileCount}f</span></Fragment>}
-          {duration && <Fragment><span style={{fontSize:8,color:c.t4,opacity:.3}}>·</span><span style={{fontSize:8,fontFamily:mono,color:c.working}}>{duration}</span></Fragment>}
-          <div style={{flex:1}}/>
-          {act && <span style={{display:"flex",alignItems:"center",transform:exp?"rotate(180deg)":"none",transition:"transform .15s ease"}}><Ph d={P.caretDown} s={10} color={c.t4}/></span>}
-        </div>
+        {/* Footer bar with stats */}
+        {hasFooter && (
+          <div style={{display:"flex",alignItems:"center",gap:6,padding:"5px 10px",background:`${col}06`,marginTop:6}}>
+            {fileCount && <span style={{fontSize:9,fontFamily:mono,color:c.t3}}>{fileCount} files</span>}
+            {diffPlus && <span style={{fontSize:9,fontFamily:mono,color:c.done}}>+{diffPlus}</span>}
+            {diffMinus && <span style={{fontSize:9,fontFamily:mono,color:c.failed}}>-{diffMinus}</span>}
+            <div style={{flex:1}}/>
+            <Glow color={col} pulse={act} s={4}/>
+          </div>
+        )}
         {/* Expanded details */}
         {act && exp && (
-          <div style={{marginTop:6,padding:"6px 8px",background:c.base,borderRadius:3,fontSize:9,lineHeight:1.7}}>
+          <div style={{padding:"10px 12px",background:c.base,fontSize:9,lineHeight:1.7,animation:"slideIn .15s ease"}}>
             {files && <div style={{fontFamily:mono,color:c.t3,marginBottom:4}}>
               {files.map((f,i) => (
                 <div key={i} style={{display:"flex",alignItems:"center",gap:6}}>
@@ -308,16 +333,9 @@ const KCard = ({title, type, status, agent, priority, desc, files, fileCount, du
                 </div>
               ))}
             </div>}
-            <div style={{display:"flex",alignItems:"center",gap:6,padding:"4px 0",borderTop:"1px solid rgba(255,255,255,0.04)"}}>
-              <span style={{fontFamily:mono,color:c.t3}}>Progress</span>
-              <div style={{flex:1,height:3,background:c.surface,borderRadius:2,overflow:"hidden"}}>
-                <div style={{width:"52%",height:"100%",background:c.done,borderRadius:2}}/>
-              </div>
-              <span style={{fontFamily:mono,color:c.done}}>12</span><span style={{fontFamily:mono,color:c.t4}}>/23</span>
-            </div>
-            <div style={{display:"flex",gap:4,marginTop:4}}>
-              <span style={{fontSize:8,padding:"3px 8px",background:`${c.purple}12`,color:c.purpleL,borderRadius:3,cursor:"pointer",display:"flex",alignItems:"center",gap:3}}><Ph d={P.terminal} s={10} color={c.purpleL}/>Terminal</span>
-              <span style={{fontSize:8,padding:"3px 8px",background:c.surface,color:c.t3,borderRadius:3,cursor:"pointer",display:"flex",alignItems:"center",gap:3}}><Ph d={P.code} s={10} color={c.t3}/>Diff</span>
+            <div style={{display:"flex",gap:4,marginTop:8}}>
+              <span style={{fontSize:9,padding:"4px 10px",background:`${c.purple}12`,color:c.purpleL,borderRadius:4,cursor:"pointer",display:"flex",alignItems:"center",gap:4}}><Ph d={P.terminal} s={10} color={c.purpleL}/>Terminal</span>
+              <span style={{fontSize:9,padding:"4px 10px",background:c.surface,color:c.t3,borderRadius:4,cursor:"pointer",display:"flex",alignItems:"center",gap:4}}><Ph d={P.code} s={10} color={c.t3}/>Diff</span>
             </div>
           </div>
         )}
@@ -327,36 +345,32 @@ const KCard = ({title, type, status, agent, priority, desc, files, fileCount, du
 };
 
 const KCol = ({title, count, color, children}) => (
-  <div style={{flex:1,minWidth:130}}>
-    <div style={{display:"flex",alignItems:"center",gap:5,marginBottom:8}}><div style={{width:2,height:12,background:color,opacity:.5,borderRadius:1}}/><span style={{fontSize:9,fontWeight:600,color:c.t2,textTransform:"uppercase",letterSpacing:.8}}>{title}</span><span style={{fontSize:8,color:c.t4,fontFamily:mono}}>{count}</span></div>
-    <div style={{display:"flex",flexDirection:"column",gap:5}}>{children}</div>
+  <div style={{flex:1,minWidth:160}}>
+    <div style={{display:"flex",alignItems:"center",gap:7,marginBottom:10,padding:"0 2px"}}><div style={{width:2,height:12,background:color,opacity:.5,borderRadius:1}}/><span style={{fontSize:10,fontWeight:600,color:c.t2,textTransform:"uppercase",letterSpacing:.5}}>{title}</span><span style={{fontSize:9,color:c.t4,fontFamily:mono}}>{count}</span></div>
+    <div style={{display:"flex",flexDirection:"column",gap:6}}>{children}</div>
   </div>
 );
 
 // ═══ TREE ITEM ═══
 const extC = {ts:"#3178C6",tsx:"#3178C6",js:"#E8D44D",css:"#2CAEE8",json:"#E8D44D",md:c.t3};
-const TI = ({name, indent=0, isFolder, isOpen, open, onToggle, active, modified, isWs, isProj, nsColor, agents, shortcut, parentActive}) => {
+const TI = ({name, indent=0, isFolder, isOpen, active, modified, isWs, isProj, nsColor, agents, shortcut, parentActive}) => {
   const ext = name.split(".").pop();
   const fileColor = extC[ext] || c.t4;
-  const canToggle = isWs || isFolder || isProj;
-  const isExpanded = open !== undefined ? open : isOpen;
   if (isWs) {
     const initial = name.charAt(0).toUpperCase();
     return (
-      <div onClick={onToggle} style={{display:"flex",alignItems:"center",gap:6,padding:"3px 6px",fontSize:10.5,color:active?c.t1:c.t3,cursor:"pointer",borderRadius:2,fontWeight:500,userSelect:"none"}}>
-        <span style={{display:"flex",alignItems:"center",transform:isExpanded?"rotate(90deg)":"rotate(0deg)",transition:"transform .15s ease",flexShrink:0}}><Ph d={P.caretRight} s={8} color={active?nsColor||c.purple:`${c.t4}80`}/></span>
-        <div style={{width:18,height:18,borderRadius:3,background:active?`${nsColor||c.purple}20`:`${nsColor||c.purple}10`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+      <div style={{display:"flex",alignItems:"center",gap:6,padding:"3px 6px",fontSize:10.5,color:active?c.t1:c.t3,cursor:"pointer",borderRadius:2,fontWeight:500}}>
+        <div style={{width:18,height:18,borderRadius:4,background:active?`${nsColor||c.purple}20`:`${nsColor||c.purple}10`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
           <span style={{fontSize:9,fontWeight:700,color:nsColor||c.purple,opacity:active?1:.6}}>{initial}</span>
         </div>
         <span style={{flex:1,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{name}</span>
-        {agents > 0 && <span style={{fontSize:7,color:c.working,fontFamily:mono}}>{agents}⚡</span>}
+        {agents > 0 && <span style={{fontSize:9,color:c.working,fontFamily:mono}}>{agents}⚡</span>}
         {shortcut && <span style={{fontSize:9,fontFamily:mono,color:c.t3,background:c.surface,padding:"1px 5px",borderRadius:2}}>{shortcut}</span>}
       </div>
     );
   }
   return (
-    <div onClick={canToggle ? onToggle : undefined} style={{display:"flex",alignItems:"center",gap:5,padding:"2px 6px",fontSize:11,color:active?c.t1:parentActive?c.t2:c.t3,cursor:canToggle?"pointer":"default",borderRadius:2,fontWeight:active?500:parentActive?450:400,userSelect:"none"}}>
-      {canToggle ? <span style={{display:"flex",alignItems:"center",transform:isExpanded?"rotate(90deg)":"rotate(0deg)",transition:"transform .15s ease",flexShrink:0,width:10,justifyContent:"center"}}><Ph d={P.caretRight} s={8} color={active?c.purpleL:parentActive?c.t3:`${c.t4}60`}/></span> : <span style={{width:10}}/>}
+    <div style={{display:"flex",alignItems:"center",gap:5,padding:"2px 6px",fontSize:11,color:active?c.t1:parentActive?c.t2:c.t3,cursor:"pointer",borderRadius:2,fontWeight:active?500:parentActive?450:400}}>
       {(isFolder || isProj) ? <Ph d={P.folder} s={14} color={active?c.purpleL:parentActive?c.t3:`${c.t4}90`}/> : <Ph d={P.file} s={14} color={fileColor+"90"}/>}
       <span style={{flex:1,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{name}</span>
       {modified && <span style={{width:4,height:4,borderRadius:"50%",background:c.working}}/>}
@@ -375,8 +389,6 @@ const KanbaiV14 = function KanbaiV14() {
   const [wsOpen, setWsOpen] = useState(false);
   const [cmdOpen, setCmdOpen] = useState(false);
   const [nsIdx, setNsIdx] = useState(0);
-  const [tree, setTree] = useState({"ideaforge":true,"electron":true,"src":true,"main":true,"ipc":true,"services":true,"renderer":true,"components":true});
-  const tog = (k) => setTree(p => ({...p,[k]:!p[k]}));
 
   useEffect(() => { const i = setInterval(() => setT(v => v+1), 1000); return () => clearInterval(i); }, []);
   useEffect(() => {
@@ -427,71 +439,71 @@ const KanbaiV14 = function KanbaiV14() {
   const RightPane = () => {
     if (!rightOpen) return null;
     return (
-      <div style={{width:200,overflow:"auto",flexShrink:0,padding:"8px 6px",background:c.base}}>
+      <div style={{width:200,overflow:"auto",flexShrink:0,padding:"8px 10px",background:`linear-gradient(to bottom, ${c.void} 0%, ${c.base} 50%)`,backgroundAttachment:"fixed"}}>
         {view === "kanban" && (
           <Fragment>
-            <div style={{fontSize:8,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Agents</div>
+            <div style={{fontSize:9,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Agents</div>
             {[{a:"claude",n:"Riku-7",s:"working",task:"Refactor IPC"},{a:"codex",n:"Vex-3",s:"idle",task:"Electron 41"}].map((ag,i) => (
               <div key={i} style={{padding:"5px 6px",marginBottom:2}}>
                 <div style={{display:"flex",alignItems:"center",gap:5}}>
                   <Bot agent={ag.a} state={ag.s} s={14}/><span style={{fontSize:9,color:ag.s==="working"?c.t1:c.t3}}>{ag.n}</span>
-                  <div style={{flex:1}}/><span style={{fontSize:7,color:ag.s==="working"?c.working:c.t4}}>{ag.s}</span>
+                  <div style={{flex:1}}/><span style={{fontSize:9,color:ag.s==="working"?c.working:c.t4}}>{ag.s}</span>
                 </div>
-                <div style={{fontSize:8,color:c.t4,marginTop:2,paddingLeft:19}}>{ag.task}</div>
+                <div style={{fontSize:9,color:c.t4,marginTop:2,paddingLeft:19}}>{ag.task}</div>
               </div>
             ))}
             <div style={{height:1,background:"rgba(255,255,255,0.04)",margin:"8px 6px"}}/>
-            <div style={{fontSize:8,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Activity</div>
+            <div style={{fontSize:9,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Activity</div>
             {["Riku-7 modified git.ts","Riku-7 modified workspace.ts","Vex-3 queued","PR #127 ready for review"].map((ev,i) => (
-              <div key={i} style={{padding:"3px 6px",fontSize:8,color:c.t3}}>{ev}</div>
+              <div key={i} style={{padding:"3px 6px",fontSize:9,color:c.t3}}>{ev}</div>
             ))}
           </Fragment>
         )}
         {view === "editor" && (
           <Fragment>
-            <div style={{fontSize:8,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>File Info</div>
-            <div style={{padding:"0 6px",fontSize:8,color:c.t3,lineHeight:1.8}}>
+            <div style={{fontSize:9,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>File Info</div>
+            <div style={{padding:"0 8px",fontSize:9,color:c.t3,lineHeight:1.8}}>
               {[["Path","src/main/ipc/git.ts"],["Language","TypeScript"],["Size","2.4 KB"],["Lines","87"],["Encoding","UTF-8"]].map(([k,v],i) => (
                 <div key={i} style={{display:"flex",justifyContent:"space-between"}}><span>{k}</span><span style={{fontFamily:mono,color:c.t2}}>{v}</span></div>
               ))}
             </div>
             <div style={{height:1,background:"rgba(255,255,255,0.04)",margin:"8px 6px"}}/>
-            <div style={{fontSize:8,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Agent Activity</div>
+            <div style={{fontSize:9,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Agent Activity</div>
             <div style={{display:"flex",alignItems:"center",gap:5,padding:"4px 6px"}}>
-              <Bot agent="claude" state="working" s={12}/><span style={{fontSize:8,color:c.working}}>Riku-7 editing</span>
+              <Bot agent="claude" state="working" s={12}/><span style={{fontSize:9,color:c.working}}>Riku-7 editing</span>
             </div>
           </Fragment>
         )}
         {view === "terminal" && (
           <Fragment>
-            <div style={{fontSize:8,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Environment</div>
-            <div style={{padding:"0 6px",fontSize:8,color:c.t3,lineHeight:1.8}}>
+            <div style={{fontSize:9,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Environment</div>
+            <div style={{padding:"0 8px",fontSize:9,color:c.t3,lineHeight:1.8}}>
               {[["Node","22.4.0"],["npm","10.9.4"],["Electron","40.0.1"],["Shell","zsh 5.9"]].map(([k,v],i) => (
                 <div key={i} style={{display:"flex",justifyContent:"space-between"}}><span>{k}</span><span style={{fontFamily:mono,color:c.t2}}>{v}</span></div>
               ))}
             </div>
             <div style={{height:1,background:"rgba(255,255,255,0.04)",margin:"8px 6px"}}/>
-            <div style={{fontSize:8,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Agents</div>
+            <div style={{fontSize:9,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Agents</div>
             {[{a:"claude",n:"Riku-7",s:"working"},{a:"codex",n:"Vex-3",s:"idle"}].map((ag,i) => (
               <div key={i} style={{display:"flex",alignItems:"center",gap:5,padding:"4px 6px",marginBottom:2}}>
-                <Bot agent={ag.a} state={ag.s} s={12}/><span style={{fontSize:8,color:ag.s==="working"?c.t1:c.t3}}>{ag.n}</span>
-                <div style={{flex:1}}/><span style={{fontSize:7,color:ag.s==="working"?c.working:c.t4}}>{ag.s}</span>
+                <Bot agent={ag.a} state={ag.s} s={12}/><span style={{fontSize:9,color:ag.s==="working"?c.t1:c.t3}}>{ag.n}</span>
+                <div style={{flex:1}}/><span style={{fontSize:9,color:ag.s==="working"?c.working:c.t4}}>{ag.s}</span>
               </div>
             ))}
           </Fragment>
         )}
         {view === "git" && (
           <Fragment>
-            <div style={{fontSize:8,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Branches</div>
-            {[{b:"main",co:c.purple,cur:false},{b:"feat/async-ipc",co:c.working,cur:true},{b:"chore/electron-41",co:"#10A37F",cur:false}].map((br,i) => (
+            <div style={{fontSize:9,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Branches</div>
+            {[{b:"main",co:c.purple,cur:false},{b:"feat/async-ipc",co:c.working,cur:true},{b:"chore/electron-41",co:"#A78BFA",cur:false}].map((br,i) => (
               <div key={i} style={{display:"flex",alignItems:"center",gap:5,padding:"3px 6px"}}>
                 <span style={{width:5,height:5,borderRadius:"50%",background:br.co}}/><span style={{fontSize:9,fontFamily:mono,color:br.cur?c.t1:c.t3}}>{br.b}</span>
-                {br.cur && <span style={{fontSize:6,color:br.co,fontWeight:600}}>HEAD</span>}
+                {br.cur && <span style={{fontSize:9,color:br.co,fontWeight:600}}>HEAD</span>}
               </div>
             ))}
             <div style={{height:1,background:"rgba(255,255,255,0.04)",margin:"8px 6px"}}/>
-            <div style={{fontSize:8,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Stats</div>
-            <div style={{padding:"0 6px",fontSize:8,color:c.t3,lineHeight:1.8}}>
+            <div style={{fontSize:9,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Stats</div>
+            <div style={{padding:"0 8px",fontSize:9,color:c.t3,lineHeight:1.8}}>
               {[["Commits","9"],["By agents","6"],["By you","3"],["Worktrees","2"]].map(([k,v],i) => (
                 <div key={i} style={{display:"flex",justifyContent:"space-between"}}><span>{k}</span><span style={{fontFamily:mono,color:c.t2}}>{v}</span></div>
               ))}
@@ -500,8 +512,8 @@ const KanbaiV14 = function KanbaiV14() {
         )}
         {view === "database" && (
           <Fragment>
-            <div style={{fontSize:8,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Connection</div>
-            <div style={{padding:"0 6px",fontSize:8,color:c.t3,lineHeight:1.8}}>
+            <div style={{fontSize:9,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 6px",marginBottom:4}}>Connection</div>
+            <div style={{padding:"0 8px",fontSize:9,color:c.t3,lineHeight:1.8}}>
               {[["Host","localhost:5432"],["Database","ideaforge_dev"],["User","kanbai"],["SSL","off"]].map(([k,v],i) => (
                 <div key={i} style={{display:"flex",justifyContent:"space-between"}}><span>{k}</span><span style={{fontFamily:mono,color:c.t2}}>{v}</span></div>
               ))}
@@ -514,34 +526,36 @@ const KanbaiV14 = function KanbaiV14() {
 
   // ═══ CONTENT: KANBAN ═══
   const ContentKanban = () => (
-    <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",background:c.raised,borderRadius:3,margin:"0 4px 4px 0"}}>
-      <div style={{display:"flex",alignItems:"center",padding:"6px 8px",gap:5,flexShrink:0}}>
-        {["All","Feature","Bug","Refactor"].map((f,i) => <span key={i} style={{fontSize:9,padding:"2px 8px",borderRadius:2,background:i===0?c.surface:"transparent",color:i===0?c.t1:c.t4,cursor:"pointer",fontWeight:i===0?500:400}}>{f}</span>)}
-        <div style={{width:1,height:14,background:"rgba(255,255,255,0.04)"}}/>
-        {[{l:"P0",co:c.failed},{l:"P1",co:c.working},{l:"P2",co:c.blue}].map((p,i) => <span key={i} style={{fontSize:8,fontFamily:mono,padding:"2px 5px",borderRadius:2,background:`${p.co}08`,color:p.co,opacity:.5,cursor:"pointer"}}>{p.l}</span>)}
+    <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",background:c.void,borderRadius:4,margin:0}}>
+      <div style={{display:"flex",alignItems:"center",padding:"6px 8px 12px 0",gap:8,flexShrink:0}}>
+        {[{l:"all",co:c.t1},{l:"feature",co:c.purple},{l:"bug",co:c.failed},{l:"refactor",co:c.blue}].map((f,i) => <span key={i} style={{fontSize:9,padding:"2px 6px",borderRadius:2,background:i===0?c.surface:`${f.co}15`,color:i===0?c.t1:f.co,opacity:i===0?1:.4,cursor:"pointer",fontWeight:i===0?500:400}}>{f.l}</span>)}
         <div style={{flex:1}}/>
-        <div style={{display:"flex",alignItems:"center",gap:3,padding:"2px 6px",background:`${c.done}08`,borderRadius:2}}><Glow color={c.done} pulse s={3}/><span style={{fontSize:9,color:c.done,fontWeight:500}}>CTO</span></div>
-        <span style={{width:4}}/>
-        <span style={{fontSize:9,color:c.purpleL,fontWeight:500,padding:"2px 8px",background:`${c.purple}10`,borderRadius:2,cursor:"pointer"}}>+ Task</span>
+        <div style={{display:"flex",alignItems:"center",gap:4,padding:"3px 10px 3px 6px",background:`${c.done}06`,borderRadius:2,border:`1px solid ${c.done}15`,cursor:"pointer"}}>
+          <Bot agent="claude" state="working" s={14}/>
+          <span style={{fontSize:9,color:c.done,fontWeight:600,letterSpacing:.5}}>CTO</span>
+          <span style={{fontSize:9,color:c.t3,fontFamily:mono}}>orchestrating</span>
+          <Glow color={c.done} pulse s={3}/>
+        </div>
+        <span style={{fontSize:10,color:c.purpleL,fontWeight:500,padding:"4px 14px",background:`${c.purple}10`,borderRadius:2,cursor:"pointer",display:"flex",alignItems:"center",gap:4}}>+ Task</span>
       </div>
-      <div style={{flex:1,padding:"8px 8px 6px",overflow:"auto",display:"flex",gap:12}}>
+      <div style={{flex:1,padding:"0 14px 0 6px",overflow:"auto",display:"flex",gap:14}}>
         <KCol title="To do" count="3" color={c.todo}>
           <KCard title="Add dark/light theme toggle" type="feature" priority="medium" status="todo" desc="System pref + manual"/>
           <KCard title="Health check push alerts" type="feature" priority="low" status="todo"/>
           <KCard title="i18n: German locale" type="doc" priority="low" status="todo"/>
         </KCol>
         <KCol title="In progress" count="3" color={c.working}>
-          <KCard title="Refactor IPC handlers" type="refactor" priority="critical" status="working" agent="claude" fileCount={23} duration="2m" files={[{s:"M",name:"git.ts",diff:"+42 -38"},{s:"M",name:"workspace.ts",diff:"+28 -24"},{s:"M",name:"terminal.ts",diff:"+15 -12"}]}/>
-          <KCard title="Fix terminal split pane" type="bug" priority="high" status="working" agent="claude" fileCount={4} duration="45s" files={[{s:"M",name:"terminal.ts",diff:"+8 -3"},{s:"A",name:"splitPane.ts",diff:"+42"}]}/>
-          <KCard title="Upgrade Electron 40→41" type="refactor" priority="medium" status="pending" agent="codex"/>
+          <KCard title="Refactor IPC handlers" type="refactor" priority="critical" status="working" agent="claude" fileCount={23} duration="2m" progress={52} diffPlus={70} diffMinus={62} files={[{s:"M",name:"git.ts",diff:"+42 -38"},{s:"M",name:"workspace.ts",diff:"+28 -24"},{s:"M",name:"terminal.ts",diff:"+15 -12"}]}/>
+          <KCard title="Fix terminal split pane" type="bug" priority="high" status="working" agent="claude" fileCount={4} duration="45s" progress={75} diffPlus={50} diffMinus={3} files={[{s:"M",name:"terminal.ts",diff:"+8 -3"},{s:"A",name:"splitPane.ts",diff:"+42"}]}/>
+          <KCard title="Upgrade Electron 40→41" type="refactor" priority="medium" status="pending" agent="codex" fileCount={8}/>
         </KCol>
         <KCol title="Review" count="2" color={c.blue}>
-          <KCard title="SSH key manager UI" type="feature" priority="medium" status="pending" agent="claude" desc="PR #127"/>
+          <KCard title="SSH key manager UI" type="feature" priority="medium" status="pending" agent="claude" desc="PR #127" fileCount={12} diffPlus={234} diffMinus={67}/>
           <KCard title="Database explorer tree" type="feature" priority="low" status="pending"/>
         </KCol>
         <KCol title="Done" count="2" color={c.done}>
-          <KCard title="Kanban drag & drop" type="feature" priority="high" status="done" agent="claude"/>
-          <KCard title="MCP hot-reload" type="bug" priority="high" status="failed" agent="claude" desc="ECONNREFUSED"/>
+          <KCard title="Kanban drag & drop" type="feature" priority="high" status="done" agent="claude" fileCount={6} diffPlus={142} diffMinus={38}/>
+          <KCard title="MCP hot-reload" type="bug" priority="high" status="failed" agent="claude" desc="ECONNREFUSED" fileCount={2} diffPlus={18} diffMinus={4}/>
         </KCol>
       </div>
     </div>
@@ -549,36 +563,37 @@ const KanbaiV14 = function KanbaiV14() {
 
   // ═══ CONTENT: EDITOR ═══
   const codeLines = [
-    {n:1,t:[{t:"import",c:c.purple},{t:" { useState } ",c:c.t1},{t:"from",c:c.purple},{t:" 'react'",c:"#6EE7B7"}]},
-    {n:2,t:[{t:"import",c:c.purple},{t:" { ipcRenderer } ",c:c.t1},{t:"from",c:c.purple},{t:" 'electron'",c:"#6EE7B7"}]},
+    {n:1,t:[{t:"import",c:c.purple},{t:" { useState } ",c:c.t1},{t:"from",c:c.purple},{t:" 'react'",c:"#34D399"}]},
+    {n:2,t:[{t:"import",c:c.purple},{t:" { ipcRenderer } ",c:c.t1},{t:"from",c:c.purple},{t:" 'electron'",c:"#34D399"}]},
     {n:3,t:[]},{n:4,t:[{t:"interface",c:c.purple},{t:" GitStatus ",c:"#E8D44D"},{t:"{",c:c.t3}]},
     {n:5,t:[{t:"  branch",c:c.t1},{t:":",c:c.t3},{t:" string",c:c.cyan}]},
     {n:6,t:[{t:"  modified",c:c.t1},{t:":",c:c.t3},{t:" string[]",c:c.cyan}]},
     {n:7,t:[{t:"  staged",c:c.t1},{t:":",c:c.t3},{t:" string[]",c:c.cyan}]},
     {n:8,t:[{t:"}",c:c.t3}]},{n:9,t:[]},
     {n:10,t:[{t:"export async function",c:c.purple},{t:" getGitStatus",c:"#E8D44D"},{t:"(): ",c:c.t3},{t:"Promise",c:c.cyan},{t:"<GitStatus>",c:c.t3},{t:" {",c:c.t3}]},
-    {n:11,t:[{t:"  const",c:c.purple},{t:" result = ",c:c.t1},{t:"await",c:c.purple},{t:" ipcRenderer.",c:c.t1},{t:"invoke",c:"#E8D44D"},{t:"(",c:c.t3},{t:"'git:status'",c:"#6EE7B7"},{t:")",c:c.t3}]},
+    {n:11,t:[{t:"  const",c:c.purple},{t:" result = ",c:c.t1},{t:"await",c:c.purple},{t:" ipcRenderer.",c:c.t1},{t:"invoke",c:"#E8D44D"},{t:"(",c:c.t3},{t:"'git:status'",c:"#34D399"},{t:")",c:c.t3}]},
     {n:12,t:[{t:"  return",c:c.purple},{t:" result",c:c.t1}]},{n:13,t:[{t:"}",c:c.t3}]},
   ];
 
   const ContentEditor = () => (
-    <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",background:c.raised,borderRadius:3,margin:"0 4px 4px 0"}}>
+    <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",background:c.void,borderRadius:4,margin:0}}>
       <div style={{display:"flex",alignItems:"center",gap:1,padding:"4px 8px",flexShrink:0,height:34}}>
         {[{name:"git.ts",active:true,mod:true},{name:"workspace.ts",mod:true},{name:"App.tsx"}].map((tab,i) => (
           <div key={i} style={{display:"flex",alignItems:"center",gap:5,padding:"4px 10px",borderRadius:2,fontSize:11,color:tab.active?c.t1:c.t3,background:tab.active?c.surface:"transparent",cursor:"pointer"}}>
-            <span style={{width:5,height:5,borderRadius:"50%",background:"#3178C6",opacity:.6}}/>{tab.name}
+            <span style={{width:5,height:5,borderRadius:"50%",background:"#3B82F6",opacity:.6}}/>{tab.name}
             {tab.mod && <span style={{width:4,height:4,borderRadius:"50%",background:c.working}}/>}
           </div>
         ))}
-      </div>
-      <div style={{display:"flex",alignItems:"center",gap:8,padding:"4px 12px 6px",fontSize:9,color:c.t4,flexShrink:0}}>
-        <span style={{fontFamily:mono,color:c.t3}}>electron<span style={{opacity:.3}}> / </span>src/main/ipc/<span style={{color:c.t1}}>git.ts</span></span>
-        <span style={{opacity:.3}}>|</span><span style={{color:"#3178C6"}}>TypeScript</span>
-        <span style={{opacity:.3}}>|</span><span>UTF-8</span>
-        <span style={{opacity:.3}}>|</span><span>Ln 13, Col 1</span>
         <div style={{flex:1}}/>
-        <Bot agent="claude" state="working" s={10}/><span style={{color:c.working}}>Riku-7 editing</span>
-        <span style={{width:4,height:4,borderRadius:"50%",background:c.working}}/>
+        <div style={{display:"flex",alignItems:"center",gap:5,fontSize:9,color:c.t4}}>
+          <Bot agent="claude" state="working" s={10}/><span style={{color:c.working}}>editing</span>
+        </div>
+      </div>
+      <div style={{display:"flex",alignItems:"center",gap:8,padding:"4px 12px 6px",fontSize:9,fontFamily:mono,color:c.t4,flexShrink:0}}>
+        <span>src <span style={{opacity:.2}}>›</span> main <span style={{opacity:.2}}>›</span> ipc <span style={{opacity:.2}}>›</span> <span style={{color:c.t2}}>git.ts</span></span>
+        <span style={{opacity:.15}}>·</span><span style={{color:"#3B82F6"}}>TypeScript</span>
+        <span style={{opacity:.15}}>·</span><span>UTF-8</span>
+        <span style={{opacity:.15}}>·</span><span>Ln 13, Col 1</span>
       </div>
       <div style={{flex:1,overflow:"auto"}}><div style={{fontFamily:mono,fontSize:12,lineHeight:1.75,padding:"4px 0"}}>
         {codeLines.map(line => (
@@ -594,55 +609,127 @@ const KanbaiV14 = function KanbaiV14() {
 
   // ═══ CONTENT: GIT ═══
   const ContentGit = () => (
-    <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",background:c.raised,borderRadius:3,margin:"0 4px 4px 0"}}>
+    <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",background:c.void,borderRadius:4,margin:0}}>
       <div style={{display:"flex",alignItems:"center",gap:1,padding:"4px 8px",flexShrink:0,height:34}}>
-        {["Changes","Graph"].map((tab,i) => <div key={i} onClick={() => setGitTab(i)} style={{padding:"4px 10px",borderRadius:2,cursor:"pointer",fontSize:11,color:gitTab===i?c.t1:c.t3,background:gitTab===i?c.surface:"transparent"}}>{tab}</div>)}
-        <div style={{flex:1}}/><span style={{fontSize:9,fontFamily:mono,color:c.purpleL}}>feat/async-ipc</span><span style={{fontSize:9,color:c.t4,margin:"0 4px"}}>|</span><span style={{fontSize:9,fontFamily:mono,color:c.t4}}>+70 -62</span>
+        {[{l:"Changes",i:P.code},{l:"Graph",i:P.git}].map((tab,i) => <div key={i} onClick={() => setGitTab(i)} style={{display:"flex",alignItems:"center",gap:4,padding:"4px 10px",borderRadius:2,cursor:"pointer",fontSize:11,color:gitTab===i?c.t1:c.t3,background:gitTab===i?c.surface:"transparent"}}><Ph d={tab.i} s={12} color={gitTab===i?c.purpleL:c.t3}/>{tab.l}</div>)}
+        <div style={{flex:1}}/>
+        <span style={{fontSize:9,fontFamily:mono,color:c.purpleL}}>feat/async-ipc</span>
+        <span style={{fontSize:9,color:c.t4,margin:"0 4px"}}>·</span>
+        <span style={{fontSize:9,fontFamily:mono,color:c.t4}}><span style={{color:c.done}}>+70</span> <span style={{color:c.failed}}>-62</span></span>
       </div>
       {gitTab === 0 && (
-        <div style={{flex:1,overflow:"auto",padding:14,fontFamily:mono,fontSize:11.5,lineHeight:1.7}}>
-          <div style={{color:c.t3,marginBottom:8}}>src/main/ipc/git.ts</div>
+        <div style={{flex:1,overflow:"auto",padding:"0 20px 16px",fontFamily:mono,fontSize:11.5,lineHeight:1.7}}>
+          <div style={{color:c.t3,marginBottom:8,fontSize:10}}>src/main/ipc/git.ts</div>
           {[{t:"  branch: string",co:c.t3,bg:"transparent"},{t:"- modified: File[]",co:c.failed,bg:`${c.failed}08`},{t:"+ modified: string[]",co:c.done,bg:`${c.done}08`},{t:"  staged: string[]",co:c.t3,bg:"transparent"},{t:"- ahead: any",co:c.failed,bg:`${c.failed}08`},{t:"+ ahead: number",co:c.done,bg:`${c.done}08`},{t:"- behind: any",co:c.failed,bg:`${c.failed}08`},{t:"+ behind: number",co:c.done,bg:`${c.done}08`},{t:"  }",co:c.t3,bg:"transparent"}].map((line,i) => (
-            <div key={i} style={{padding:"0 8px",background:line.bg,borderRadius:2}}><span style={{color:line.co}}>{line.t}</span></div>
+            <div key={i} style={{padding:"1px 10px",background:line.bg,borderRadius:2,margin:"1px 0"}}><span style={{color:line.co}}>{line.t}</span></div>
           ))}
         </div>
       )}
       {gitTab === 1 && (
-        <div style={{flex:1,overflow:"auto",padding:14}}>
-          <div style={{display:"flex",gap:8,marginBottom:12}}>
-            {[{b:"main",co:c.purple},{b:"feat/async-ipc",co:c.working},{b:"chore/electron-41",co:"#10A37F"}].map((br,i) => <span key={i} style={{fontSize:9,fontFamily:mono,color:br.co,padding:"1px 6px",borderRadius:2,background:`${br.co}10`}}>{br.b}</span>)}
-          </div>
-          <svg width="100%" height="200" viewBox="0 0 600 200">
-            <line x1="50" y1="20" x2="50" y2="180" stroke={c.purple} strokeWidth="2" opacity=".4"/>
-            <line x1="150" y1="40" x2="150" y2="140" stroke={c.working} strokeWidth="2" opacity=".4"/>
-            <line x1="250" y1="60" x2="250" y2="120" stroke="#10A37F" strokeWidth="2" opacity=".4"/>
-            <line x1="50" y1="40" x2="150" y2="40" stroke={c.working} strokeWidth="1" strokeDasharray="4" opacity=".3"/>
-            <line x1="50" y1="60" x2="250" y2="60" stroke="#10A37F" strokeWidth="1" strokeDasharray="4" opacity=".3"/>
-            <line x1="150" y1="140" x2="50" y2="160" stroke={c.working} strokeWidth="1" strokeDasharray="4" opacity=".3"/>
-            {[{x:50,y:20,co:c.purple,l:"init: project setup",h:"a1b2c3d"},{x:50,y:40,co:c.purple,l:"feat: add kanban",h:"b82e1f0"},{x:150,y:60,co:c.working,l:"refactor: IPC",h:"c3d4e5f"},{x:250,y:80,co:"#10A37F",l:"chore: electron",h:"d4e5f6a"},{x:150,y:100,co:c.working,l:"fix: terminal",h:"e5f6a7b"},{x:50,y:120,co:c.purple,l:"feat: database",h:"f6a7b8c"},{x:150,y:140,co:c.working,l:"feat: SSH keys",h:"a7b8c9d"},{x:50,y:160,co:c.purple,l:"merge: async-ipc",h:"b8c9d0e"},{x:50,y:180,co:c.purple,l:"release: v1.0.52",h:"c9d0e1f"}].map((cm,i) => (
-              <Fragment key={i}><circle cx={cm.x} cy={cm.y} r="4" fill={cm.co}/><text x={cm.x+16} y={cm.y-4} fill={c.t4} fontSize="8" fontFamily={mono}>{cm.h}</text><text x={cm.x+76} y={cm.y-4} fill={c.t2} fontSize="9">{cm.l}</text></Fragment>
+        <div style={{flex:1,overflow:"auto",padding:"0 16px 16px"}}>
+          {/* Branch legend */}
+          <div style={{display:"flex",gap:10,marginBottom:14,padding:"0 4px"}}>
+            {[{b:"main",co:c.done},{b:"feat/async-ipc",co:c.purple},{b:"chore/electron-41",co:"#A78BFA"}].map((br,i) => (
+              <div key={i} style={{display:"flex",alignItems:"center",gap:5}}>
+                <span style={{width:8,height:8,borderRadius:"50%",background:br.co,boxShadow:`0 0 6px ${br.co}40`}}/>
+                <span style={{fontSize:10,fontFamily:mono,color:br.co}}>{br.b}</span>
+              </div>
             ))}
-          </svg>
+          </div>
+          {/* Graph rows */}
+          <div style={{display:"flex",flexDirection:"column",gap:0}}>
+            {[
+              {h:"c9d0e1f",m:"release: v1.0.52",br:0,co:c.done,tag:"v1.0.52"},
+              {h:"b8c9d0e",m:"merge: async-ipc → main",br:0,co:c.done,merge:1},
+              {h:"a7b8c9d",m:"feat: SSH key manager",br:1,co:c.purple,ag:"claude"},
+              {h:"e5f6a7b",m:"fix: terminal split pane",br:1,co:c.purple,ag:"claude"},
+              {h:"f6a7b8c",m:"feat: database explorer",br:0,co:c.done},
+              {h:"d4e5f6a",m:"chore: upgrade electron 41",br:2,co:"#A78BFA",ag:"codex"},
+              {h:"c3d4e5f",m:"refactor: IPC handlers",br:1,co:c.purple,ag:"claude"},
+              {h:"b82e1f0",m:"feat: add kanban board",br:0,co:c.done,fork:[1,2]},
+              {h:"a1b2c3d",m:"init: project setup",br:0,co:c.done},
+            ].map((cm,i) => (
+              <div key={i} style={{display:"flex",alignItems:"center",height:30}}>
+                {/* Lane indicators */}
+                <div style={{width:80,display:"flex",alignItems:"center",flexShrink:0,position:"relative",height:"100%"}}>
+                  {[c.done,c.purple,"#A78BFA"].map((lc,li) => {
+                    const x = 12 + li * 24;
+                    const active = cm.br === li;
+                    const showLine = li === 0 || (li === 1 && i <= 6 && i >= 2) || (li === 2 && i >= 5 && i <= 5);
+                    return (
+                      <Fragment key={li}>
+                        {showLine && <div style={{position:"absolute",left:x,top:0,bottom:0,width:2,background:`${lc}18`}}/>}
+                        {active && (
+                          <div style={{position:"absolute",left:x-4,top:"50%",transform:"translateY(-50%)",width:10,height:10,borderRadius:"50%",background:c.void,display:"flex",alignItems:"center",justifyContent:"center",zIndex:1}}>
+                            <span style={{width:8,height:8,borderRadius:"50%",background:lc,boxShadow:`0 0 8px ${lc}50`}}/>
+                          </div>
+                        )}
+                      </Fragment>
+                    );
+                  })}
+                  {cm.merge != null && <div style={{position:"absolute",left:12+cm.merge*24+5,top:"50%",width:24*(cm.merge)-24*(0)+12,height:1,background:`${c.purple}30`}}/>}
+                  {cm.fork && cm.fork.map((f,fi) => <div key={fi} style={{position:"absolute",left:12+5,top:"50%",width:f*24-5,height:1,background:`${[c.done,c.purple,"#A78BFA"][f]}25`}}/>)}
+                </div>
+                {/* Hash */}
+                <span style={{width:62,fontSize:9,fontFamily:mono,color:c.t4,flexShrink:0}}>{cm.h}</span>
+                {/* Message */}
+                <span style={{flex:1,fontSize:10.5,color:c.t2,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{cm.m}</span>
+                {/* Meta */}
+                <div style={{display:"flex",alignItems:"center",gap:6,flexShrink:0,marginLeft:8}}>
+                  {cm.ag && <Bot agent={cm.ag} state="idle" s={12}/>}
+                  {cm.tag && <span style={{fontSize:9,fontFamily:mono,padding:"1px 6px",borderRadius:2,background:`${c.done}15`,color:c.done}}>{cm.tag}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
   );
 
   // ═══ CONTENT: DATABASE ═══
+  const [dbMode, setDbMode] = useState("natural");
   const ContentDatabase = () => (
-    <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",background:c.raised,borderRadius:3,margin:"0 4px 4px 0"}}>
-      <div style={{display:"flex",alignItems:"center",gap:8,padding:"8px 12px",flexShrink:0}}>
-        <span style={{fontSize:9,fontFamily:mono,color:c.purpleL}}>ideaforge_dev</span><span style={{fontSize:8,color:c.t4}}>·</span><span style={{fontSize:8,color:c.t3}}>public.projects</span>
+    <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",background:c.void,borderRadius:4,margin:0}}>
+      <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 20px",flexShrink:0}}>
+        <span style={{fontSize:10,fontFamily:mono,color:c.purpleL}}>ideaforge_dev</span><span style={{fontSize:9,color:c.t4}}>·</span><span style={{fontSize:9,color:c.t3}}>public.projects</span>
+        <div style={{flex:1}}/>
+        <div style={{display:"flex",gap:1}}>
+          {[{id:"natural",label:"Natural"},{id:"sql",label:"SQL"}].map(m => (
+            <div key={m.id} onClick={() => setDbMode(m.id)} style={{fontSize:9,padding:"3px 10px",borderRadius:2,cursor:"pointer",color:dbMode===m.id?c.t1:c.t3,background:dbMode===m.id?c.surface:"transparent",fontWeight:dbMode===m.id?500:400}}>{m.label}</div>
+          ))}
+        </div>
       </div>
-      <div style={{flex:1,padding:"0 12px 12px",overflow:"auto"}}>
-        <div style={{fontFamily:mono,fontSize:10,color:c.t3,marginBottom:8}}>SELECT * FROM projects ORDER BY updated_at DESC LIMIT 5;</div>
+      <div style={{flex:1,padding:"0 20px 16px",overflow:"auto"}}>
+        {dbMode === "natural" ? (
+          <Fragment>
+            {/* NL query input */}
+            <div style={{display:"flex",alignItems:"center",gap:9,padding:"8px 12px",background:c.surface,borderRadius:4,marginBottom:10}}>
+              <Bot agent="claude" state="idle" s={14}/>
+              <span style={{fontSize:11,color:c.t1}}>Show me all active projects, most recently updated first</span>
+              <div style={{flex:1}}/>
+              <span style={{fontSize:9,color:c.t4,fontFamily:mono}}>↵</span>
+            </div>
+            {/* Generated SQL */}
+            <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:8}}>
+              <span style={{fontSize:9,color:c.t4}}>generated</span>
+              <span style={{fontSize:9,fontFamily:mono,color:c.t3,padding:"2px 8px",background:c.surface,borderRadius:2}}>SELECT * FROM projects ORDER BY updated_at DESC LIMIT 5;</span>
+              <span style={{fontSize:9,color:c.t4}}>3ms</span>
+            </div>
+          </Fragment>
+        ) : (
+          <div style={{padding:"8px 12px",background:c.surface,borderRadius:4,marginBottom:10,fontFamily:mono,fontSize:10,color:c.t1}}>
+            <span style={{color:c.purple}}>SELECT</span> * <span style={{color:c.purple}}>FROM</span> projects <span style={{color:c.purple}}>ORDER BY</span> updated_at <span style={{color:c.purple}}>DESC</span> <span style={{color:c.purple}}>LIMIT</span> <span style={{color:c.cyan}}>5</span>;
+          </div>
+        )}
+        {/* Results table */}
         <div style={{display:"grid",gridTemplateColumns:"40px 1fr 80px 70px",gap:"1px",fontSize:9,fontFamily:mono}}>
           {["id","name","status","updated"].map((h,i) => <div key={i} style={{padding:"4px 6px",background:c.surface,color:c.t2,fontWeight:600}}>{h}</div>)}
           {[[1,"electron","active","2m"],[2,"api","active","14m"],[3,"web","building","1h"],[4,"mobile","draft","3d"]].map((row,ri) => (
             <Fragment key={ri}>{row.map((cell,ci) => <div key={ci} style={{padding:"4px 6px",color:ci===2?(cell==="active"?c.done:cell==="building"?c.working:c.t4):c.t2}}>{cell}</div>)}</Fragment>
           ))}
         </div>
-        <div style={{marginTop:10,fontSize:8,color:c.t4}}>4 rows · 3ms</div>
+        <div style={{marginTop:10,fontSize:9,color:c.t4}}>4 rows · 3ms</div>
       </div>
     </div>
   );
@@ -659,8 +746,8 @@ const KanbaiV14 = function KanbaiV14() {
     if (!wsOpen) return null;
     return (
       <div onClick={() => setWsOpen(false)} style={{position:"absolute",inset:0,background:"rgba(0,0,0,0.55)",display:"flex",alignItems:"flex-start",justifyContent:"center",paddingTop:"12%",zIndex:100,backdropFilter:"blur(6px)"}}>
-        <div onClick={e => e.stopPropagation()} style={{width:400,background:c.raised,borderRadius:6,overflow:"hidden",boxShadow:"0 24px 80px rgba(0,0,0,0.6)"}}>
-          <div style={{padding:"12px 16px",display:"flex",alignItems:"center",gap:10}}><Ph d={P.search} s={14} color={c.t3}/><input autoFocus placeholder="Switch workspace..." style={{flex:1,background:"transparent",border:"none",outline:"none",fontSize:13,color:c.t1,fontFamily:"inherit",caretColor:c.purpleL}}/><span style={{fontSize:8,fontFamily:mono,color:c.t4,padding:"2px 6px",background:c.surface,borderRadius:2}}>ESC</span></div>
+        <div onClick={e => e.stopPropagation()} style={{width:400,background:c.raised,borderRadius:4,overflow:"hidden",boxShadow:"0 24px 80px rgba(0,0,0,0.6)"}}>
+          <div style={{padding:"12px 16px",display:"flex",alignItems:"center",gap:10}}><Ph d={P.search} s={14} color={c.t3}/><input autoFocus placeholder="Switch workspace..." style={{flex:1,background:"transparent",border:"none",outline:"none",fontSize:13,color:c.t1,fontFamily:"inherit",caretColor:c.purpleL}}/><span style={{fontSize:9,fontFamily:mono,color:c.t4,padding:"2px 6px",background:c.surface,borderRadius:2}}>ESC</span></div>
           <div style={{height:1,background:"rgba(255,255,255,0.04)"}}/>
           <div style={{maxHeight:280,overflow:"auto",padding:"4px 0"}}>
             {wsList.map((ws,i) => {
@@ -669,14 +756,14 @@ const KanbaiV14 = function KanbaiV14() {
                 <div key={i} onMouseEnter={() => setSel(i)} style={{display:"flex",alignItems:"center",gap:10,padding:"7px 16px",cursor:"pointer",background:isSel?c.surface:"transparent",position:"relative"}}>
                   {isSel && <div style={{width:2,height:14,background:c.purple,borderRadius:1,position:"absolute",left:6}}/>}
                   <span style={{fontSize:12,color:isSel?c.t1:c.t2,fontWeight:isSel?500:400,flex:1}}>{ws.name}</span>
-                  {ws.agents > 0 && <span style={{fontSize:8,color:c.working,fontFamily:mono}}>{ws.agents}⚡</span>}
-                  {ws.active && <span style={{fontSize:8,color:c.purple}}>●</span>}
+                  {ws.agents > 0 && <span style={{fontSize:9,color:c.working,fontFamily:mono}}>{ws.agents}⚡</span>}
+                  {ws.active && <span style={{fontSize:9,color:c.purple}}>●</span>}
                 </div>
               );
             })}
           </div>
           <div style={{height:1,background:"rgba(255,255,255,0.04)"}}/>
-          <div style={{padding:"8px 16px",fontSize:8,color:c.t4}}>↑↓ | ↵ switch | ⌘⇧W</div>
+          <div style={{padding:"8px 16px",fontSize:9,color:c.t4}}>↑↓ | ↵ switch | ⌘⇧W</div>
         </div>
       </div>
     );
@@ -692,30 +779,30 @@ const KanbaiV14 = function KanbaiV14() {
     if (!cmdOpen) return null;
     return (
       <div onClick={() => setCmdOpen(false)} style={{position:"absolute",inset:0,background:"rgba(0,0,0,0.6)",display:"flex",alignItems:"flex-start",justifyContent:"center",paddingTop:"10%",zIndex:100,backdropFilter:"blur(12px)"}}>
-        <div onClick={e => e.stopPropagation()} style={{width:480,background:c.raised,borderRadius:8,overflow:"hidden",boxShadow:"0 32px 100px rgba(0,0,0,0.7)"}}>
+        <div onClick={e => e.stopPropagation()} style={{width:480,background:c.raised,borderRadius:4,overflow:"hidden",boxShadow:"0 32px 100px rgba(0,0,0,0.7)"}}>
           <div style={{padding:"14px 18px",display:"flex",alignItems:"center",gap:12}}>
-            <div style={{width:28,height:28,borderRadius:6,background:c.surface,display:"flex",alignItems:"center",justifyContent:"center"}}><Ph d={P.search} s={13} color={c.t3}/></div>
+            <div style={{width:28,height:28,borderRadius:4,background:c.surface,display:"flex",alignItems:"center",justifyContent:"center"}}><Ph d={P.search} s={13} color={c.t3}/></div>
             <input autoFocus value={q} onChange={e => { setQ(e.target.value); setSel(0); }} placeholder="Search commands, files, actions..." style={{flex:1,background:"transparent",border:"none",outline:"none",fontSize:14,color:c.t1,fontFamily:"inherit",caretColor:c.purpleL}}/>
-            <span style={{fontSize:8,fontFamily:mono,color:c.t4,padding:"3px 8px",background:c.surface,borderRadius:3}}>ESC</span>
+            <span style={{fontSize:9,fontFamily:mono,color:c.t4,padding:"3px 8px",background:c.surface,borderRadius:4}}>ESC</span>
           </div>
           <div style={{height:1,background:"rgba(255,255,255,0.04)"}}/>
           <div style={{maxHeight:300,overflow:"auto",padding:"6px 0"}}>
             {Object.entries(grouped).map(([cat, cs]) => (
               <div key={cat}>
-                <div style={{fontSize:7,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:1.2,padding:"8px 18px 4px"}}>{cat}</div>
+                <div style={{fontSize:9,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:1.2,padding:"8px 18px 4px"}}>{cat}</div>
                 {cs.map(cmd => { const idx = fi++; const isSel = idx === sel; return (
                   <div key={idx} onMouseEnter={() => setSel(idx)} style={{display:"flex",alignItems:"center",gap:12,padding:"8px 18px",cursor:"pointer",background:isSel?c.surface:"transparent",position:"relative"}}>
                     {isSel && <div style={{width:2,height:16,background:c.purple,borderRadius:1,position:"absolute",left:6}}/>}
                     <span style={{width:20,height:20,borderRadius:4,background:isSel?c.hover:c.surface,display:"flex",alignItems:"center",justifyContent:"center"}}><Ph d={cmd.i} s={12} color={isSel?c.t1:c.t3}/></span>
                     <span style={{fontSize:12,color:isSel?c.t1:c.t2,fontWeight:isSel?500:400,flex:1}}>{cmd.l}</span>
-                    {cmd.h && <span style={{fontSize:8,fontFamily:mono,color:c.t4,background:isSel?c.hover:c.surface,padding:"2px 6px",borderRadius:3}}>{cmd.h}</span>}
+                    {cmd.h && <span style={{fontSize:9,fontFamily:mono,color:c.t4,background:isSel?c.hover:c.surface,padding:"2px 6px",borderRadius:4}}>{cmd.h}</span>}
                   </div>
                 ); })}
               </div>
             ))}
           </div>
           <div style={{height:1,background:"rgba(255,255,255,0.04)"}}/>
-          <div style={{padding:"8px 18px",display:"flex",alignItems:"center",gap:10,fontSize:8,color:c.t4}}>↑↓ navigate | ↵ run | esc<div style={{flex:1}}/><Bot agent="claude" state="idle" s={10}/><span style={{color:c.t3}}>powered by AI</span></div>
+          <div style={{padding:"8px 18px",display:"flex",alignItems:"center",gap:10,fontSize:9,color:c.t4}}>↑↓ navigate | ↵ run | esc<div style={{flex:1}}/><Bot agent="claude" state="idle" s={10}/><span style={{color:c.t3}}>powered by AI</span></div>
         </div>
       </div>
     );
@@ -723,69 +810,70 @@ const KanbaiV14 = function KanbaiV14() {
 
   // ═══ RENDER ═══
   return (
-    <div style={{width:"100%",height:"100%",minHeight:550,background:c.base,fontFamily:'-apple-system,"SF Pro Text",Inter,system-ui,sans-serif',color:c.t1,display:"flex",flexDirection:"column",position:"relative",overflow:"hidden",borderRadius:4}}>
+    <div style={{width:"100%",height:"100%",minHeight:550,background:c.void,fontFamily:'"Geist Sans","Geist",-apple-system,system-ui,sans-serif',color:c.t1,display:"flex",flexDirection:"column",position:"relative",overflow:"hidden",borderRadius:4}}>
       <style>{`@keyframes beamSpin{to{transform:rotate(360deg)}}@keyframes scan{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}@keyframes blink{50%{opacity:0}}.lp-outer{transition:width .25s cubic-bezier(.4,0,.2,1)}*::-webkit-scrollbar{width:5px;height:5px}*::-webkit-scrollbar-track{background:transparent}*::-webkit-scrollbar-thumb{background:transparent;border-radius:10px;transition:background .3s}*::-webkit-scrollbar-corner{background:transparent}*:hover::-webkit-scrollbar-thumb{background:rgba(255,255,255,.035)}*:hover::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.08)}*{scrollbar-width:thin;scrollbar-color:transparent transparent}*:hover{scrollbar-color:rgba(255,255,255,.035) transparent}`}</style>
       <WsModal/><CmdModal/>
 
       {/* ═══ TOP BAR ═══ */}
-      <div style={{height:40,display:"flex",alignItems:"center",padding:"0 10px",flexShrink:0,position:"relative",zIndex:2}}>
+      <div style={{height:34,display:"flex",alignItems:"center",padding:"0 10px",flexShrink:0,position:"relative",zIndex:2}}>
         <div style={{display:"flex",gap:6,marginRight:10}}>{["#EF4444","#F59E0B","#22C55E"].map((col,i) => <span key={i} style={{width:10,height:10,borderRadius:"50%",background:col,opacity:.5}}/>)}</div>
 
         {/* Namespace / Workspace */}
-        <div onClick={() => setWsOpen(true)} style={{display:"flex",alignItems:"center",gap:5,padding:"3px 10px",borderRadius:4,cursor:"pointer",background:c.raised,marginRight:8}}>
+        <div onClick={() => setWsOpen(true)} style={{display:"flex",alignItems:"center",gap:4,padding:"4px 8px",borderRadius:4,cursor:"pointer",background:c.raised,marginRight:8,height:20}}>
           <span style={{width:5,height:5,borderRadius:1,background:ns.color,opacity:.7}}/>
           <span style={{fontSize:9,color:c.t4,fontWeight:500}}>{ns.name}</span>
           <span style={{fontSize:9,color:c.t4,opacity:.3}}>/</span>
-          <span style={{fontSize:10,color:c.t1,fontWeight:500}}>ideaforge</span>
+          <span style={{fontSize:9,color:c.t1,fontWeight:500}}>ideaforge</span>
         </div>
 
         {/* Core nav */}
         <div style={{display:"flex",gap:1}}>{coreNav.map(item => <NavBtn key={item.id} item={item}/>)}</div>
 
+        <div onClick={() => setCmdOpen(true)} style={{display:"flex",alignItems:"center",padding:"3px 8px",background:c.raised,borderRadius:4,cursor:"pointer",marginLeft:6}}>
+          <span style={{fontSize:9,fontFamily:mono,color:c.t4}}>⌘K</span>
+        </div>
+
         <div style={{flex:1}}/>
 
         {/* Logo: absolute center */}
-        <div style={{position:"absolute",left:"50%",top:"50%",transform:"translate(-50%,-50%)",pointerEvents:"none"}}><Logo size={13}/></div>
+        <div style={{position:"absolute",left:"50%",top:"50%",transform:"translate(-50%,-50%)",pointerEvents:"none"}}><Logo h={12}/></div>
 
-        {/* Right: tools + notification + ⌘K */}
+        {/* Right: flat tools + more menu + notification + avatar */}
         <div style={{display:"flex",gap:1,alignItems:"center"}}>
-          {toolGroups.map((g,gi) => {
-            const isOpen = openTool === gi;
-            const hasActive = g.items.some(it => it.id === view);
-            return (
-              <div key={gi} style={{position:"relative"}}>
-                <div onClick={() => setOpenTool(isOpen ? null : gi)} style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"3px 7px",borderRadius:4,cursor:"pointer",background:hasActive?c.surface:isOpen?c.surface:"transparent"}}>
-                  <Ph d={g.icon} s={14} color={hasActive?c.purpleL:c.t3}/>
-                </div>
-                {isOpen && (
-                  <Fragment>
-                    <div onClick={() => setOpenTool(null)} style={{position:"fixed",inset:0,zIndex:40,background:"transparent"}}/>
-                    <div style={{position:"absolute",top:"100%",right:0,paddingTop:4,zIndex:50}}>
-                      <div style={{background:c.raised,borderRadius:6,padding:"4px",boxShadow:"0 8px 32px rgba(0,0,0,0.5)",minWidth:140}}>
-                        <div style={{fontSize:8,fontWeight:600,color:c.t4,textTransform:"uppercase",letterSpacing:.8,padding:"4px 8px 2px"}}>{g.label}</div>
-                        {g.items.map(item => {
-                          const sel = view === item.id;
-                          return (
-                            <div key={item.id} onClick={(e) => { e.stopPropagation(); setView(item.id); setOpenTool(null); }} style={{display:"flex",alignItems:"center",gap:8,padding:"5px 8px",borderRadius:3,cursor:"pointer",background:sel?c.surface:"transparent"}}>
-                              <Ph d={item.icon} s={13} color={sel?c.purpleL:c.t3}/>
-                              <span style={{fontSize:10,color:sel?c.t1:c.t2}}>{item.label}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </Fragment>
-                )}
-              </div>
-            );
+          {[{id:"database",icon:P.database,label:"Database"},{id:"api",icon:P.api,label:"API"},{id:"health",icon:P.health,label:"Health"},{id:"packages",icon:P.pkg,label:"Packages"}].map(item => {
+            const sel = view === item.id;
+            return <div key={item.id} onClick={() => setView(item.id)} title={item.label} style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"3px 7px",borderRadius:4,cursor:"pointer",background:sel?c.surface:"transparent"}}><Ph d={item.icon} s={14} color={sel?c.purpleL:c.t3}/></div>;
           })}
+          <div style={{position:"relative"}}>
+            <div onClick={() => setOpenTool(openTool==="more"?null:"more")} style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"3px 7px",borderRadius:4,cursor:"pointer",background:openTool==="more"?c.surface:"transparent"}}>
+              <svg width={14} height={14} viewBox="0 0 256 256" fill={c.t3} style={{flexShrink:0}}><circle cx="128" cy="128" r="16"/><circle cx="64" cy="128" r="16"/><circle cx="192" cy="128" r="16"/></svg>
+            </div>
+            {openTool==="more" && (
+              <Fragment>
+                <div onClick={() => setOpenTool(null)} style={{position:"fixed",inset:0,zIndex:40,background:"transparent"}}/>
+                <div style={{position:"absolute",top:"100%",right:0,paddingTop:4,zIndex:50}}>
+                  <div style={{background:c.raised,borderRadius:4,padding:"4px",boxShadow:"0 8px 32px rgba(0,0,0,0.5)",minWidth:160}}>
+                    {[{id:"analysis",icon:P.shield,label:"Analysis"},{id:"stats",icon:P.stats,label:"Stats"}].map(item => {
+                      const sel = view === item.id;
+                      return <div key={item.id} onClick={(e) => {e.stopPropagation();setView(item.id);setOpenTool(null)}} style={{display:"flex",alignItems:"center",gap:8,padding:"5px 8px",borderRadius:4,cursor:"pointer",background:sel?c.surface:"transparent"}}><Ph d={item.icon} s={13} color={sel?c.purpleL:c.t3}/><span style={{fontSize:10,color:sel?c.t1:c.t2}}>{item.label}</span></div>;
+                    })}
+                    <div style={{height:1,background:"rgba(255,255,255,0.04)",margin:"4px 4px"}}/>
+                    <div style={{display:"flex",alignItems:"center",gap:8,padding:"5px 8px",borderRadius:4,cursor:"pointer"}}>
+                      <Ph d={P.plus} s={13} color={c.t3}/>
+                      <span style={{fontSize:10,color:c.t2}}>Marketplace</span>
+                    </div>
+                  </div>
+                </div>
+              </Fragment>
+            )}
+          </div>
           <div style={{width:1,height:14,background:"rgba(255,255,255,0.06)",margin:"0 3px"}}/>
           <div style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"3px 5px",borderRadius:4,cursor:"pointer",position:"relative"}}>
             <Ph d={P.bell} s={14} color={c.t3}/>
             <span style={{position:"absolute",top:0,right:2,width:7,height:7,borderRadius:"50%",background:c.failed,boxShadow:`0 0 6px ${c.failed}60`,border:`1.5px solid ${c.base}`,fontSize:0}}/>
           </div>
-          <div onClick={() => setCmdOpen(true)} style={{display:"flex",alignItems:"center",padding:"3px 8px",background:c.raised,borderRadius:4,cursor:"pointer"}}>
-            <span style={{fontSize:9,fontFamily:mono,color:c.t4}}>⌘K</span>
+          <div style={{width:18,height:18,borderRadius:"50%",background:`linear-gradient(135deg, ${c.purple}60, ${c.pending}60)`,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",marginLeft:2}}>
+            <span style={{fontSize:9,fontWeight:600,color:c.t1}}>M</span>
           </div>
         </div>
       </div>
@@ -793,10 +881,11 @@ const KanbaiV14 = function KanbaiV14() {
       {/* ═══ BODY ═══ */}
       <div style={{flex:1,display:"flex",overflow:"hidden",position:"relative",zIndex:1}}>
         {/* ═══ LEFT PANE (inline for transitions) ═══ */}
-        <div style={{width:leftOpen?210:40,flexShrink:0,background:c.base,overflow:"hidden",position:"relative",transition:"width .25s cubic-bezier(.4,0,.2,1)"}}>
+        <div style={{width:leftOpen?210:40,flexShrink:0,background:`linear-gradient(to bottom, ${c.void} 0%, ${c.base} 50%)`,backgroundAttachment:"fixed",overflow:"hidden",position:"relative",transition:"width .25s cubic-bezier(.4,0,.2,1)"}}>
           <div style={{width:leftOpen?210:40,height:"100%",position:"absolute",top:0,left:0,transition:"width .25s cubic-bezier(.4,0,.2,1)"}}>
             {/* Collapsed */}
-            <div style={{position:"absolute",top:0,left:0,width:40,height:"100%",display:"flex",flexDirection:"column",alignItems:"center",paddingTop:6,gap:4,opacity:leftOpen?0:1,transition:"opacity .2s ease",pointerEvents:leftOpen?"none":"auto"}}>
+            <div style={{position:"absolute",top:0,left:0,width:40,height:"100%",display:"flex",flexDirection:"column",alignItems:"center",paddingTop:6,gap:6,opacity:leftOpen?0:1,transition:"opacity .2s ease",pointerEvents:leftOpen?"none":"auto"}}>
+              <div onClick={() => setLeftOpen(true)} style={{width:24,height:24,borderRadius:4,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",opacity:.4,marginBottom:2}}><Ph d={P.sidebar} s={14} color={c.t3}/></div>
               {[{name:"ideaforge",active:true,agents:2},{name:"portfolio"},{name:"side-project"}].map((ws,wi) => {
                 const ini = ws.name.charAt(0).toUpperCase();
                 return (
@@ -807,7 +896,6 @@ const KanbaiV14 = function KanbaiV14() {
                 );
               })}
               <div style={{flex:1}}/>
-              <div style={{fontSize:6,color:c.t4,fontFamily:mono,marginBottom:8,writingMode:"vertical-rl",opacity:.4}}>{"⌘B"}</div>
             </div>
             {/* Expanded */}
             <div style={{width:210,display:"flex",flexDirection:"column",height:"100%",opacity:leftOpen?1:0,transition:"opacity .2s ease",pointerEvents:leftOpen?"auto":"none"}}>
@@ -817,16 +905,16 @@ const KanbaiV14 = function KanbaiV14() {
                 <div onClick={() => setLeftOpen(false)} style={{padding:"2px",borderRadius:2,cursor:"pointer",opacity:.4}}><Ph d={P.sidebar} s={12} color={c.t3}/></div>
               </div>
               <div style={{flex:1,overflow:"auto",padding:"0 2px"}}>
-                <TI name="ideaforge" isWs open={tree.ideaforge} onToggle={() => tog("ideaforge")} active nsColor={ns.color} agents={2}/>
-                {tree.ideaforge && <div style={{marginLeft:14,paddingLeft:6,borderLeft:"1px solid "+ns.color+"15"}}>
-                  <TI name="electron" isProj open={tree.electron} onToggle={() => tog("electron")} active parentActive/>
-                  {tree.electron && <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
-                    <TI name="src" isFolder open={tree.src} onToggle={() => tog("src")} parentActive/>
-                    {tree.src && <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
-                      <TI name="main" isFolder open={tree.main} onToggle={() => tog("main")} parentActive/>
-                      {tree.main && <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
-                        <TI name="ipc" isFolder open={tree.ipc} onToggle={() => tog("ipc")} parentActive/>
-                        {tree.ipc && <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
+                <TI name="ideaforge" isWs isOpen active nsColor={ns.color} agents={2}/>
+                <div style={{marginLeft:14,paddingLeft:6,borderLeft:"1px solid "+ns.color+"15"}}>
+                  <TI name="electron" isProj isOpen active parentActive/>
+                  <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
+                    <TI name="src" isFolder isOpen parentActive/>
+                    <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
+                      <TI name="main" isFolder isOpen parentActive/>
+                      <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
+                        <TI name="ipc" isFolder isOpen parentActive/>
+                        <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
                           <TI name="git.ts" active modified/>
                           <TI name="workspace.ts" modified/>
                           <TI name="terminal.ts"/>
@@ -834,92 +922,87 @@ const KanbaiV14 = function KanbaiV14() {
                           <TI name="ai-session.ts"/>
                           <TI name="database.ts"/>
                           <TI name="health.ts"/>
-                        </div>}
-                        <TI name="services" isFolder open={tree.services} onToggle={() => tog("services")}/>
-                        {tree.services && <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
+                        </div>
+                        <TI name="services" isFolder isOpen/>
+                        <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
                           <TI name="storage.ts"/>
                           <TI name="mcp-server.ts"/>
                           <TI name="updater.ts"/>
-                        </div>}
-                      </div>}
-                      <TI name="preload" isFolder open={tree.preload} onToggle={() => tog("preload")}/>
-                      <TI name="renderer" isFolder open={tree.renderer} onToggle={() => tog("renderer")}/>
-                      {tree.renderer && <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
-                        <TI name="components" isFolder open={tree.components} onToggle={() => tog("components")}/>
-                        {tree.components && <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
+                        </div>
+                      </div>
+                      <TI name="preload" isFolder/>
+                      <TI name="renderer" isFolder isOpen/>
+                      <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
+                        <TI name="components" isFolder isOpen/>
+                        <div style={{marginLeft:12,paddingLeft:6,borderLeft:"1px solid rgba(255,255,255,0.04)"}}>
                           <TI name="KanbanBoard.tsx"/>
                           <TI name="Terminal.tsx"/>
                           <TI name="Editor.tsx"/>
                           <TI name="GitPanel.tsx"/>
                           <TI name="Sidebar.tsx"/>
                           <TI name="StatusBar.tsx"/>
-                        </div>}
-                        <TI name="lib" isFolder open={tree.lib} onToggle={() => tog("lib")}/>
-                        <TI name="styles" isFolder open={tree.styles} onToggle={() => tog("styles")}/>
+                        </div>
+                        <TI name="lib" isFolder/>
+                        <TI name="styles" isFolder/>
                         <TI name="App.tsx"/>
                         <TI name="index.tsx"/>
-                      </div>}
-                      <TI name="shared" isFolder open={tree.shared} onToggle={() => tog("shared")}/>
-                    </div>}
-                    <TI name="tests" isFolder open={tree.tests} onToggle={() => tog("tests")}/>
-                    <TI name="scripts" isFolder open={tree.scripts} onToggle={() => tog("scripts")}/>
+                      </div>
+                      <TI name="shared" isFolder/>
+                    </div>
+                    <TI name="tests" isFolder/>
+                    <TI name="scripts" isFolder/>
                     <TI name="package.json"/>
                     <TI name="tsconfig.json"/>
                     <TI name="vite.config.ts"/>
                     <TI name="CLAUDE.md"/>
                     <TI name="AGENTS.md"/>
-                  </div>}
-                  <TI name="api" isProj open={tree.api} onToggle={() => tog("api")}/>
-                  <TI name="web" isProj open={tree.web} onToggle={() => tog("web")}/>
-                </div>}
-              </div>
-              {/* ═══ STICKY BOTTOM WS ═══ */}
-              <div style={{flexShrink:0,padding:"0 2px 4px",borderTop:`1px solid rgba(255,255,255,0.04)`}}>
-                <TI name="portfolio" isWs open={tree.portfolio} onToggle={() => tog("portfolio")} nsColor={ns.color} shortcut={"⌘ 2"}/>
-                <TI name="side-project" isWs open={tree.sideproject} onToggle={() => tog("sideproject")} nsColor={ns.color} shortcut={"⌘ 3"}/>
+                  </div>
+                  <TI name="api" isProj/>
+                  <TI name="web" isProj/>
+                </div>
+                <TI name="portfolio" isWs nsColor={ns.color} shortcut={"⌘ 2"}/>
+                <TI name="side-project" isWs nsColor={ns.color} shortcut={"⌘ 3"}/>
               </div>
             </div>
           </div>
         </div>
-        <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden"}}>
+        <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",padding:"0 8px"}}>
           {/* Content */}
           <div style={{flex:1,display:"flex",overflow:"hidden"}}>{Active()}</div>
           {/* ═══ TERMINAL BOTTOM SHEET ═══ */}
-          <div style={{height:termOpen?200:32,background:c.raised,borderRadius:"3px 3px 0 0",margin:"0 4px 0 0",overflow:"hidden",flexShrink:0,transition:"height .2s cubic-bezier(.4,0,.2,1)",display:"flex",flexDirection:"column"}}>
+          <div style={{height:termOpen?200:32,background:c.base,borderRadius:"4px 4px 0 0",margin:0,overflow:"hidden",flexShrink:0,transition:"height .2s cubic-bezier(.4,0,.2,1)",display:"flex",flexDirection:"column"}}>
             {/* Tab bar */}
-            <div onDoubleClick={() => setTermOpen(!termOpen)} style={{display:"flex",alignItems:"center",gap:1,padding:"0 8px",height:32,flexShrink:0,cursor:"pointer",userSelect:"none"}}>
-              <span onClick={(e) => {e.stopPropagation();setTermOpen(!termOpen)}} style={{display:"flex",alignItems:"center",color:c.t4,marginRight:4,transform:termOpen?"rotate(180deg)":"none",transition:"transform .2s",cursor:"pointer"}}><Ph d={P.caretDown} s={10} color={c.t4}/></span>
+            <div onDoubleClick={() => setTermOpen(!termOpen)} style={{display:"flex",alignItems:"center",padding:"0 12px",height:34,flexShrink:0,cursor:"pointer",userSelect:"none"}}>
+              <span onClick={(e) => {e.stopPropagation();setTermOpen(!termOpen)}} style={{display:"flex",alignItems:"center",color:c.t4,marginRight:8,transform:termOpen?"rotate(180deg)":"none",transition:"transform .2s",cursor:"pointer"}}><Ph d={P.caretDown} s={11} color={c.t4}/></span>
               {[{name:"zsh",active:false},{name:"Riku-7 · async-ipc",agent:"claude",active:true,dot:c.working},{name:"Vex-3 · electron-41",agent:"codex"}].map((tab,i) => (
-                <div key={i} style={{display:"flex",alignItems:"center",gap:5,padding:"4px 10px",borderRadius:2,fontSize:11,color:tab.active?c.t1:c.t3,background:tab.active?c.surface:"transparent",cursor:"pointer"}}>
-                  {tab.agent ? <Bot agent={tab.agent} state={tab.active?"working":"idle"} s={12}/> : <span style={{width:5,height:5,borderRadius:"50%",background:c.t4,opacity:.5}}/>}
-                  {tab.name}{tab.dot && <Glow color={tab.dot} pulse s={3}/>}
+                <div key={i} style={{display:"flex",alignItems:"center",gap:5,padding:"4px 12px",borderRadius:2,fontSize:11,color:tab.active?c.t1:c.t3,background:tab.active?c.surface:"transparent",cursor:"pointer"}}>
+                  {tab.agent ? <Bot agent={tab.agent} state={tab.active?"working":"idle"} s={12}/> : <span style={{width:5,height:5,borderRadius:4,background:c.t4,opacity:.4}}/>}
+                  {tab.name}{tab.dot && <Glow color={tab.dot} pulse s={4}/>}
                 </div>
               ))}
               <div style={{flex:1}}/>
-              <span style={{fontSize:8,fontFamily:mono,color:c.t4}}>⌘`</span>
+              <span style={{fontSize:9,fontFamily:mono,color:c.t4}}>⌘`</span>
             </div>
             {termOpen && (
               <Fragment>
                 {/* Metadata bar */}
-                <div style={{display:"flex",alignItems:"center",gap:8,padding:"2px 12px 4px",fontSize:9,color:c.t4,flexShrink:0}}>
-                  <span style={{fontFamily:mono,color:c.cyan}}>~/ideaforge</span>
-                  <span style={{opacity:.3}}>|</span><span style={{fontFamily:mono,color:c.purpleL}}>feat/async-ipc</span>
-                  <span style={{opacity:.3}}>|</span><span>zsh 5.9</span>
-                  <span style={{opacity:.3}}>|</span><Bot agent="claude" state="working" s={10}/><span style={{color:c.working}}>Riku-7</span><span>Opus</span>
-                  <span style={{opacity:.3}}>|</span><span style={{fontFamily:mono,color:c.working}}>{Math.floor(t/60)}:{String(t%60).padStart(2,"0")}</span>
-                  <div style={{flex:1}}/><span style={{fontFamily:mono}}><span style={{color:c.done}}>12</span><span style={{color:c.t4}}>/23</span> handlers</span>
+                <div style={{display:"flex",alignItems:"center",gap:8,padding:"0 16px 4px",fontSize:9,color:c.t4,flexShrink:0}}>
+                  <span style={{fontFamily:mono,color:c.purple}}>~/ideaforge</span>
+                  <span style={{opacity:.15}}>·</span><span style={{fontFamily:mono,color:c.pending}}>feat/async-ipc</span>
+                  <span style={{opacity:.15}}>·</span><Bot agent="claude" state="working" s={10}/><span style={{color:c.working}}>Riku-7</span>
+                  <span style={{fontFamily:mono,color:c.working}}>{Math.floor(t/60)}:{String(t%60).padStart(2,"0")}</span>
+                  <div style={{flex:1}}/><span style={{fontFamily:mono}}><span style={{color:c.done}}>12</span><span style={{color:c.t4}}>/23</span></span>
                 </div>
                 {/* Terminal output */}
-                <div style={{flex:1,padding:"4px 14px 8px",fontFamily:mono,fontSize:11,lineHeight:1.7,color:c.t2,overflow:"auto"}}>
-                  <div style={{color:c.t3}}>$ claude --model opus "Refactor IPC handlers to async"</div>
-                  <div style={{marginTop:6,padding:"6px 10px",background:`${c.working}06`,borderRadius:3,position:"relative"}}>
-                    <div style={{position:"absolute",left:0,top:4,bottom:4,width:2,borderRadius:1,background:`${c.working}30`}}/>
+                <div style={{flex:1,padding:"4px 16px 8px",fontFamily:mono,fontSize:11,lineHeight:1.7,color:c.t2,overflow:"auto"}}>
+                  <div style={{color:c.t4}}><span style={{color:c.purple}}>❯</span> claude --model opus "Refactor IPC handlers to async"</div>
+                  <div style={{marginTop:6,padding:"6px 10px",background:`${c.purple}04`,borderRadius:4,borderLeft:`2px solid ${c.purple}15`}}>
                     <div style={{color:c.t3,fontSize:10}}>Reading 23 IPC handler files across <span style={{color:c.blue}}>src/main/ipc/</span></div>
                     <div style={{color:c.t3,fontSize:10,marginTop:2}}>Progress: <span style={{color:c.done}}>12</span><span style={{color:c.t4}}>/23</span> handlers migrated</div>
-                    <div style={{color:c.t3,fontSize:10}}>Currently: <span style={{color:c.blue}}>git.ts</span><span style={{color:c.t4}}> → </span>converting <span style={{color:"#E8D44D"}}>getCommitHistory()</span></div>
+                    <div style={{color:c.t3,fontSize:10}}>Currently: <span style={{color:c.blue}}>git.ts</span> → converting <span style={{color:"#EAB308"}}>getCommitHistory()</span></div>
                   </div>
-                  <div style={{marginTop:6,color:c.t4,fontSize:10}}><span style={{color:c.done}}>M</span> git.ts +42 -38 | <span style={{color:c.done}}>M</span> workspace.ts +28 -24</div>
-                  <div style={{marginTop:2}}><span style={{animation:"blink 1s step-end infinite",color:c.t1}}>▊</span></div>
+                  <div style={{marginTop:6,color:c.t4,fontSize:10}}><span style={{color:c.done}}>M</span> git.ts +42 -38 · <span style={{color:c.done}}>M</span> workspace.ts +28 -24</div>
+                  <div style={{marginTop:4}}><span style={{animation:"blink 1.2s step-end infinite",color:c.purple}}>▊</span></div>
                 </div>
               </Fragment>
             )}
@@ -929,7 +1012,7 @@ const KanbaiV14 = function KanbaiV14() {
       </div>
 
       {/* ═══ STATUS BAR ═══ */}
-      <div style={{height:24,display:"flex",alignItems:"center",padding:"0 14px",background:c.base,fontSize:8,color:c.t4,gap:6,fontFamily:mono,flexShrink:0,zIndex:1}}>
+      <div style={{height:28,display:"flex",alignItems:"center",padding:"0 18px",background:c.void,fontSize:9,color:c.t4,gap:8,fontFamily:mono,flexShrink:0,zIndex:1}}>
         <Glow color={c.done} s={3}/><span>2 agents</span>
         <span style={{opacity:.3}}>|</span>
         <Bot agent="claude" state="working" s={9}/><span style={{color:c.working}}>working</span><span>{Math.floor(t/60)}:{String(t%60).padStart(2,"0")}</span>
@@ -938,6 +1021,12 @@ const KanbaiV14 = function KanbaiV14() {
         <span style={{opacity:.3}}>|</span>
         <span><span style={{color:c.done}}>+70</span> <span style={{color:c.failed}}>-62</span></span>
         <div style={{flex:1}}/>
+        <span style={{display:"flex",alignItems:"center",gap:4,color:c.t3}}>session <span style={{color:c.done}}>$0.42</span></span>
+        <span style={{opacity:.3}}>|</span>
+        <span style={{display:"flex",alignItems:"center",gap:4,color:c.t3}}>workspace <span style={{color:c.t2}}>$12.80</span></span>
+        <span style={{opacity:.3}}>|</span>
+        <span style={{display:"flex",alignItems:"center",gap:5,color:c.t3}}>Max <span style={{display:"inline-flex",alignItems:"center",width:40,height:4,background:c.surface,borderRadius:2,overflow:"hidden"}}><span style={{width:"67%",height:"100%",background:c.pending,borderRadius:2}}/></span> <span style={{color:c.pending}}>67%</span></span>
+        <span style={{opacity:.3}}>|</span>
         <span>Node 22.4.0</span>
         <span style={{opacity:.3}}>|</span>
         <span>Electron 40</span>
